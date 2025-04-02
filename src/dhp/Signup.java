@@ -102,6 +102,9 @@ public class Signup extends javax.swing.JFrame {
         Cpassword = new javax.swing.JPasswordField();
         phone1 = new javax.swing.JLabel();
         age1 = new javax.swing.JTextField();
+        check = new javax.swing.JCheckBox();
+        sques = new javax.swing.JComboBox<>();
+        answ = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -113,51 +116,51 @@ public class Signup extends javax.swing.JFrame {
 
         name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         name.setText("FIRSTNAME");
-        jPanel41.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 80, 30));
+        jPanel41.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 80, 30));
 
         age.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         age.setText("LASTNAME");
-        jPanel41.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 80, 30));
+        jPanel41.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 80, 30));
 
         address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         address.setText("USERNAME");
-        jPanel41.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 80, 30));
+        jPanel41.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 80, 30));
 
         dob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         dob.setText("PASSWORD");
-        jPanel41.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 80, 30));
+        jPanel41.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 80, 30));
 
         phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         phone.setText("EMAIL");
-        jPanel41.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 50, 30));
+        jPanel41.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 50, 30));
 
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel41.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 270, 30));
+        jPanel41.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 270, 30));
 
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel41.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 270, 30));
+        jPanel41.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 270, 30));
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
-        jPanel41.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 270, 30));
+        jPanel41.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 270, 30));
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
-        jPanel41.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 270, 30));
+        jPanel41.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 270, 30));
         jPanel41.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
         jPanel41.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
@@ -183,14 +186,14 @@ public class Signup extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel41.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 190, 40));
+        jPanel41.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, 110, 40));
 
         stats.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         stats.setText("TYPE");
-        jPanel41.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 40, 30));
+        jPanel41.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 40, 30));
 
         type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Patient", "Medical Staff" }));
-        jPanel41.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 270, 30));
+        jPanel41.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 270, 30));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setText("REGISTER");
@@ -204,24 +207,41 @@ public class Signup extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel41.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 190, 40));
-        jPanel41.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 270, 30));
+        jPanel41.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 110, 40));
+        jPanel41.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 270, 30));
 
         dob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        dob1.setText("CONFIRM PASSWORD");
-        jPanel41.add(dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 150, 30));
-        jPanel41.add(Cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 270, 30));
+        dob1.setText("RE-ENTER PASSWORD");
+        jPanel41.add(dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 150, 30));
+        jPanel41.add(Cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 270, 30));
 
         phone1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         phone1.setText("AGE");
-        jPanel41.add(phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 40, 30));
+        jPanel41.add(phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 40, 30));
 
         age1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 age1ActionPerformed(evt);
             }
         });
-        jPanel41.add(age1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 270, 30));
+        jPanel41.add(age1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 270, 30));
+
+        check.setBackground(new java.awt.Color(255, 255, 255));
+        check.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        check.setText("show");
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
+        jPanel41.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, 30));
+
+        sques.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sques.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your First pet?", "What's the lastname of your Mother?", "What's your favorite Food?", "What's your favorite Color?", " " }));
+        jPanel41.add(sques, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 250, -1));
+
+        answ.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel41.add(answ, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 180, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,11 +289,13 @@ public class Signup extends javax.swing.JFrame {
     String e = email.getText().trim();
     String a = age1.getText().trim();
     String at = type.getSelectedItem().toString().trim();
+    String sq = sques.getSelectedItem().toString().trim();
+    String ans = answ.getText().toString().trim();
     
 
 
 
-        if(uname.isEmpty() || pass.isEmpty() || Cpass.isEmpty() || ln.isEmpty() || fn.isEmpty())
+        if(uname.isEmpty() || pass.isEmpty() || Cpass.isEmpty() || ln.isEmpty() || fn.isEmpty() || sq.isEmpty()|| ans.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please Fill All Boxes");
 
@@ -292,8 +314,10 @@ public class Signup extends javax.swing.JFrame {
             try 
             {
                 String npass = passwordHasher.hashPassword(password.getText());
-                dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_username, u_type, u_password, u_email, u_age, u_status) "
-                + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"','" + npass + "', '" + e + "', '" + a + "', 'Pending')");
+                
+                
+                dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_username, u_type, u_password, u_email, u_age, u_status, security_question, security_answer) "
+                + "VALUES ('" + fn + "', '" + ln + "', '" + uname + "', '"+at+"','" + npass + "', '" + e + "', '" + a + "', 'Pending','" + sq + "', '" + ans + "'");
 
                 JOptionPane.showMessageDialog(null, "Registered succesfully!");
                 DHPMAIN d = new DHPMAIN();
@@ -318,6 +342,20 @@ public class Signup extends javax.swing.JFrame {
     private void age1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_age1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_age1ActionPerformed
+
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
+
+        boolean isSelected = check.isSelected();
+
+        if (isSelected) {
+            Cpassword.setEchoChar((char)0);
+            password.setEchoChar((char)0);
+        } else {
+            Cpassword.setEchoChar('*');
+            password.setEchoChar('*');
+        }
+
+    }//GEN-LAST:event_checkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,6 +398,8 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel address;
     private javax.swing.JLabel age;
     private javax.swing.JTextField age1;
+    private javax.swing.JTextField answ;
+    private javax.swing.JCheckBox check;
     private javax.swing.JLabel dob;
     private javax.swing.JLabel dob1;
     private javax.swing.JTextField email;
@@ -377,6 +417,7 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JLabel phone;
     private javax.swing.JLabel phone1;
+    private javax.swing.JComboBox<String> sques;
     private javax.swing.JLabel stats;
     private javax.swing.JComboBox<String> type;
     private javax.swing.JTextField username;
