@@ -14,6 +14,8 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import user.DoctorDashboard;
+import user.ForgetPassword;
 
 /**
  *
@@ -95,6 +97,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -188,6 +191,15 @@ public class DHPMAIN extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 120, 30));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel11.setText("Forgot Password?");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,7 +269,7 @@ public class DHPMAIN extends javax.swing.JFrame {
             }else if(type.equals("Medical Staff"))
             {
                 JOptionPane.showMessageDialog(null, "Login Succesfully");
-                UserDashboard ed = new UserDashboard();
+                DoctorDashboard ed = new DoctorDashboard();
                 ed.setVisible(true);
                 this.dispose();
             }else if(!type.equals("User") || !type.equals("Pending") || !type.equals("Admin"))
@@ -274,6 +286,12 @@ public class DHPMAIN extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+            ForgetPassword fm = new ForgetPassword();
+                    fm.setVisible(true);
+                    this.dispose();      // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -317,6 +335,7 @@ public class DHPMAIN extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

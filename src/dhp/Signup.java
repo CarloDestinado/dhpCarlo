@@ -290,7 +290,7 @@ public class Signup extends javax.swing.JFrame {
     String a = age1.getText().trim();
     String at = type.getSelectedItem().toString().trim();
     String sq = sques.getSelectedItem().toString().trim();
-    String ans = answ.getText().toString().trim();
+    String ans = answ.getText().trim();
     
 
 
