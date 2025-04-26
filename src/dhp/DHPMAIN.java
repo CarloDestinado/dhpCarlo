@@ -5,8 +5,9 @@
  */
 package dhp;
 
-import user.UserDashboard;
 import admin.AdminDashboard;
+import user.UserDashboard;
+import admin.AdminRecords;
 import config.dbConnector;
 import config.passwordHasher;
 import config.session;
@@ -158,7 +159,7 @@ public class DHPMAIN extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("DIAGNOSIS HISTORY PROFILE");
+        jLabel9.setText("DIAGNOSIS HEATLH PROFILE");
         right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 350, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/log in bg.png"))); // NOI18N
@@ -192,13 +193,14 @@ public class DHPMAIN extends javax.swing.JFrame {
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 120, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Forgot Password?");
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 420, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,7 +221,7 @@ public class DHPMAIN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AdminDashboard rd = new AdminDashboard();
+        AdminRecords rd = new AdminRecords();
         rd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

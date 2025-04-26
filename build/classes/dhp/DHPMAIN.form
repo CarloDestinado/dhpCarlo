@@ -194,7 +194,7 @@
                   <Font name="Times New Roman" size="21" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="DIAGNOSIS HISTORY PROFILE"/>
+                <Property name="text" type="java.lang.String" value="DIAGNOSIS HEATLH PROFILE"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -279,6 +279,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="16" style="0"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Forgot Password?"/>
           </Properties>
           <Events>
@@ -286,7 +287,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="420" width="-1" height="-1"/>
+              <AbsoluteConstraints x="544" y="420" width="170" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

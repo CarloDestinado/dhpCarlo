@@ -5,44 +5,134 @@
  */
 package admin;
 
+
+import config.session;
 import config.dbConnector;
-import dhp.DHPMAIN;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableModel;
-import net.proteanit.sql.DbUtils;
-
-
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import dhp.DHPMAIN;
 
 /**
  *
- * @author SCC-COLLEGE
+ * @author User     
  */
 public class AdminDashboard extends javax.swing.JFrame {
 
     /**
-     * Creates new form Record
+     * Creates new form dashboard
      */
     public AdminDashboard() {
         initComponents();
-    
-     displayData();
+        
+        loadUserProfile();
+        
     }
 
-    public void displayData()
-    {
-        try
-        {
-            dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_username, "
-                                        + "u_type, u_email FROM tbl_user");
-            account_table.setModel(DbUtils.resultSetToTableModel(rs));
-             rs.close();
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
+
+
+ private void loadLogs() {
+    dbConnector connector = new dbConnector();
+    try (Connection con = connector.getConnection()) {
+
+        // Update 'Pending' log_status to 'Active' for recent logins
+        String updateQuery = "UPDATE tbl_log SET log_status = 'Active' WHERE log_status = 'Pending'";
+        try (PreparedStatement updateStmt = con.prepareStatement(updateQuery)) {
+            updateStmt.executeUpdate();
         }
+
+        // Fetch updated logs including logout time and log_description
+        String selectQuery = "SELECT l.log_id, l.u_username, l.login_time, l.logout_time, l.u_type, " +
+                             "CASE WHEN u.u_username IS NULL THEN 'Invalid User' ELSE l.log_status END AS log_status, " +
+                             "l.log_description " + // Include log_description
+                             "FROM tbl_log l LEFT JOIN tbl_users u ON l.u_username = u.u_username " +
+                             "ORDER BY l.login_time DESC";
+
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(selectQuery)) {
+
+            DefaultTableModel model = new DefaultTableModel(
+                new String[]{"Log ID", "Username", "Login Time", "Logout Time", "User Type", "Status", "Description"}, 0 // Add "Description" column
+            );
+
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("log_id"),
+                    rs.getString("u_username"),
+                    rs.getTimestamp("login_time"),
+                    rs.getTimestamp("logout_time"),
+                    rs.getString("u_type"),
+                    rs.getString("log_status"),
+                    rs.getString("log_description") // Add log_description value
+                });
+            }
+
+            logstbl.setModel(model);
+        }
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error loading logs: " + ex.getMessage());
+    }
 }
+
+ 
+ private void logoutUser(String username) {
+    dbConnector connector = new dbConnector();
+    try (Connection con = connector.getConnection()) {
+        
+        
+        // Update log_status to "Inactive" and set logout_time
+        String updateQuery = "UPDATE tbl_log SET log_status = 'Inactive', logout_time = NOW() " +
+                             "WHERE u_username = ? AND log_status = 'Active'";
+        
+        try (PreparedStatement stmt = con.prepareStatement(updateQuery)) {
+            stmt.setString(1, username);
+            int updatedRows = stmt.executeUpdate();
+
+            if (updatedRows > 0) {
+                JOptionPane.showMessageDialog(null, "User " + username + " has logged out successfully!");
+            } else {
+                JOptionPane.showMessageDialog(null, "No active session found for " + username);
+            }
+        }
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error logging out: " + ex.getMessage());
+    }
+}
+
+ private void loadUserProfile() {
+    dbConnector dbc = new dbConnector();
+    session sess = session.getInstance();
+
+    String query = "SELECT u_image FROM tbl_users WHERE u_id = ?";
+
+    try (Connection conn = dbc.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+        pstmt.setInt(1, sess.getUid());
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            String imagePath = rs.getString("u_image");
+
+            if (imagePath != null && !imagePath.isEmpty()) {
+                ImageIcon icon = new ImageIcon(imagePath);
+                u_image.setIcon(icon);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace(); // Log the error
+        JOptionPane.showMessageDialog(this, "Error loading profile image: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}   
+
 
 
 
@@ -55,252 +145,194 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        account_table = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        logstbl = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        u_image = new javax.swing.JLabel();
+        acc_fname = new javax.swing.JLabel();
+        acc_lname = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
-        jButton4.setBackground(new java.awt.Color(51, 153, 255));
-        jButton4.setText("ADD");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setBackground(new java.awt.Color(51, 153, 255));
-        jButton5.setText("UPDATE");
-        jButton5.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton5.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Admin Dashboard");
-
-        jButton6.setBackground(new java.awt.Color(51, 153, 255));
-        jButton6.setText("DELETE");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 500));
-        setMinimumSize(new java.awt.Dimension(600, 500));
         setPreferredSize(new java.awt.Dimension(900, 550));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+        getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 528, 510, -1));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 500));
-        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("DIAGNOSIS HEATLH PROFILE");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 590, 34));
 
-        account_table.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel3.setText("Health Data, Made Simple");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 590, -1));
+
+        logstbl.setBackground(new java.awt.Color(51, 153, 255));
+        logstbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        logstbl.setForeground(new java.awt.Color(255, 255, 255));
+        logstbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-
+                "log_id", "u_username", "login_time", "u_type", "log_status", "log_description"
             }
         ));
-        jScrollPane1.setViewportView(account_table);
+        jScrollPane1.setViewportView(logstbl);
 
-        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 720, 440));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 640, 230));
 
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        u_image.setBackground(new java.awt.Color(204, 204, 204));
+        u_image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(u_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 130));
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 140, 130));
+
+        acc_fname.setBackground(new java.awt.Color(255, 255, 255));
+        acc_fname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_fname.setText("ADMIN");
+        jPanel3.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, 20));
+
+        acc_lname.setBackground(new java.awt.Color(255, 255, 255));
+        acc_lname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_lname.setText("ADMIN");
+        jPanel3.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 70, 20));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
             }
         });
-        jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 110, 30));
-
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("DELETE USER");
-        jLabel7.setToolTipText("");
-        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 120, -1));
+        jLabel9.setBackground(new java.awt.Color(0, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/users.png"))); // NOI18N
+        jLabel9.setText("ACCOUNT");
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 80, 50));
 
-        jDesktopPane1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 210, -1));
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
         });
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("UPDATE USER");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 120, 20));
+        jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/admin/zs.png"))); // NOI18N
+        jLabel6.setText("VIEW DIAGNOSIS");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 130, 50));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/updateUser.png"))); // NOI18N
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 90));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 210, 50));
 
-        jDesktopPane1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jButton2.setText("LOG-OUT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 100, 30));
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
-            }
         });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ADD USER");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
+        jLabel4.setBackground(new java.awt.Color(0, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/users.png"))); // NOI18N
+        jLabel4.setText("USERS");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 70, 50));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-users.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 90));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 210, 50));
 
-        jDesktopPane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 110));
-
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 915, 521));
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 880, 500);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      session sess = session.getInstance();
+    if (sess.getUid() != 0) {
+        logoutUser(sess.getUsername());  // Log out the current user
+    }
+
+        DHPMAIN m = new DHPMAIN();
+    JOptionPane.showMessageDialog(null, "Log-out Success!");
+    m.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+       AdminRecords us = new AdminRecords();
+       us.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+      session sess = session.getInstance();
+    if (sess.getUid() == 0) {
+        JOptionPane.showMessageDialog(null, "No account, Login First!"); 
         DHPMAIN m = new DHPMAIN();
         m.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    acc_fname.setText("" + sess.getFname());
+    acc_lname.setText("" + sess.getLname());
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    // Load logs when the form is activated
+    loadLogs();
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        AddUser m = new AddUser();
-        m.setVisible(true);
-        this.dispose();  // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        AddUser m = new AddUser();
-        m.setVisible(true);
-        this.dispose();  // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_formWindowActivated
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-
-        int rowIndex = account_table.getSelectedRow();
-        
-        
-        if(rowIndex < 0)
-        {
-            JOptionPane.showMessageDialog(null, "Please select an Item");
-        }else
-        {
-            AddUser au = new AddUser();
-
-            
-            try
-            {
-                
-
-                dbConnector dbc = new dbConnector();
-                TableModel tbl = account_table.getModel();
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+tbl.getValueAt(rowIndex,0)+"'");
-                System.out.println("\n1");
-
-                if(rs.next())
-                {
-                    System.out.println("\n2");
-
-                    au.UID.setText("" + rs.getString("u_id"));
-                    au.Age1.setText("" + rs.getString("u_age"));
-                    au.Fname.setText("" +rs.getString("u_fname"));
-                    au.Lname.setText("" + rs.getString("u_lname"));
-                    au.Username.setText("" + rs.getString("u_username"));
-                    au.type.setSelectedItem("" + rs.getString("u_type"));
-                    au.status.setSelectedItem("" + rs.getString("u_status"));
-                    au.password.setText("" + rs.getString("u_password"));
-                    au.email.setText("" + rs.getString("u_email"));
-                    au.add.setEnabled(false);
-                    au.update.setEnabled(true);
-                   // au.password.setEnabled(false); 
-                   // au.Cpassword.setEnabled(false);
-
-                    au.setVisible(true);
-                    this.dispose();
-                }
-                
-            }catch(SQLException ex)
-            {
-                System.out.println(""+ex);
-            }
-        }
+     
     }//GEN-LAST:event_jPanel5MouseClicked
-    
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-        AddUser m = new AddUser();
-         m.setVisible(true);
-         this.dispose(); // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel4MouseClicked
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel4MouseEntered
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5MouseEntered
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        AdminDetails ads = new AdminDetails();
+        ads.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -329,6 +361,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -339,24 +373,21 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable account_table;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel acc_fname;
+    private javax.swing.JLabel acc_lname;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable logstbl;
+    private javax.swing.JLabel u_image;
     // End of variables declaration//GEN-END:variables
 }
