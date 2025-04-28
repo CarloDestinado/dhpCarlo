@@ -31,12 +31,12 @@ public class dbConnector {
     //Function to retrieve data
         public ResultSet getData(String sql) throws SQLException{
             Statement stmt = connect.createStatement();
-            ResultSet rst = stmt.executeQuery(sql);
+            ResultSet rst = stmt.executeQuery(sql);             
             return rst;
         }
     
         //Function to save data
-        public boolean insertData(String sql){
+        public boolean insertData(String sql){  
             try{
                 PreparedStatement pst = connect.prepareStatement(sql);
                 pst.executeUpdate();
@@ -70,5 +70,11 @@ public class dbConnector {
             System.out.println("Connection Error: "+ex);
         }
     }
+
+   public Connection getConnection() {
+        return connect;
+    }
+
+
 }
 

@@ -6,8 +6,8 @@
 package dhp;
 
 import admin.AdminDashboard;
-import user.UserDashboard;
-import admin.AdminRecords;
+import user.PatientDashboard;
+import admin.Records;
 import config.dbConnector;
 import config.passwordHasher;
 import config.session;
@@ -150,7 +150,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 90, 30));
 
-        right.setBackground(new java.awt.Color(51, 153, 255));
+        right.setBackground(new java.awt.Color(0, 51, 153));
         right.setToolTipText("");
         right.setPreferredSize(new java.awt.Dimension(400, 500));
         right.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -158,6 +158,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         right.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("DIAGNOSIS HEATLH PROFILE");
         right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 350, -1));
@@ -165,6 +166,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/log in bg.png"))); // NOI18N
         right.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 280, 480, 410));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-medical-records-100.png"))); // NOI18N
         right.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 100, 120));
 
@@ -206,9 +208,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +221,7 @@ public class DHPMAIN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AdminRecords rd = new AdminRecords();
+        Records rd = new Records();
         rd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -239,53 +239,44 @@ public class DHPMAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String uname = username.getText().trim();
-         String pass = new String(password.getPassword()).trim();
-        
-     try 
-            {
-                String npass = passwordHasher.hashPassword(password.getText());
-        if(pass.isEmpty() || uname.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "Please Fill all Boxes");
-        }else if(logAcc(uname,npass))
-        {
-        if(!status.equals("Active"))
-        {
-            JOptionPane.showMessageDialog(null, "Inactive Account, Contact the Admin");
-        }else
-        {
+ String uname = username.getText().trim();
+String pass = new String(password.getPassword()).trim();
 
-            if(type.equals("Admin"))
-            {
-                JOptionPane.showMessageDialog(null, "Login Succesfully");
+try {
+    String npass = passwordHasher.hashPassword(pass); // <-- Fix: you should hash 'pass' not 'password.getText()'
+
+    if (pass.isEmpty() || uname.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please fill all boxes");
+    } else if (logAcc(uname, npass)) {
+        if (!status.equals("Active")) {
+            JOptionPane.showMessageDialog(null, "Inactive Account, contact the Admin");
+        } else {
+            JOptionPane.showMessageDialog(null, "Login Successfully");
+
+            if (type.equals("Admin")) {
                 AdminDashboard ad = new AdminDashboard();
                 ad.setVisible(true);
                 this.dispose();
-            }else if(type.equals("Patient"))
-            {
-                JOptionPane.showMessageDialog(null, "Login Succesfully");
-                UserDashboard ed = new UserDashboard();
-                ed.setVisible(true);
+            } else if (type.equals("Patient")) {
+                PatientDashboard pd = new PatientDashboard();
+                pd.setVisible(true);
                 this.dispose();
-            }else if(type.equals("Medical Staff"))
-            {
-                JOptionPane.showMessageDialog(null, "Login Succesfully");
-                DoctorDashboard ed = new DoctorDashboard();
-                ed.setVisible(true);
+            } else if (type.equals("Medical Staff")) {
+                DoctorDashboard dd = new DoctorDashboard();
+                dd.setVisible(true);
                 this.dispose();
-            }else if(!type.equals("User") || !type.equals("Pending") || !type.equals("Admin"))
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Unknown Account Type, Contact the Admin");
             }
         }
-        }else
-        {
-            JOptionPane.showMessageDialog(null, "Invalid Account");
-        }
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println("" + ex);
-        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid Account");
+    }
+} catch (NoSuchAlgorithmException ex) {
+    System.out.println("Error: " + ex);
+}
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 

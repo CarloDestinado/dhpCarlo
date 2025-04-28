@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package user;
 
 import config.session;
@@ -15,19 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import dhp.DHPMAIN;
 
-/**
- *
- * @author milan
- */
+
 public class ForgetPassword extends javax.swing.JFrame {
   private String correctAnswer;
-    /**
-     * Creates new form ForgetPassword
-     */
+    
     public ForgetPassword() {
         initComponents();
         
@@ -54,7 +44,7 @@ public class ForgetPassword extends javax.swing.JFrame {
 
     try {
         PreparedStatement stmt = con.prepareStatement(
-            "SELECT security_question, security_answer FROM tbl_users WHERE u_username = ?"
+            "SELECT security_question, security_answer FROM tbl_user WHERE u_username = ?"
         );
         stmt.setString(1, username);
         ResultSet rs = stmt.executeQuery();
@@ -148,7 +138,7 @@ public void logEvent(int userId, String username, String description) {
         dbConnector db = new dbConnector();
         Connection con = db.getConnection();
         dbConnector connector = new dbConnector(); // For logging query
-        Session sess = Session.getInstance();
+        session sess = session.getInstance();
 
         if (con == null) {
             JOptionPane.showMessageDialog(this, "Database connection failed. Please try again later.");
@@ -158,7 +148,7 @@ public void logEvent(int userId, String username, String description) {
         try {
             // Update password in the database
             PreparedStatement stmt = con.prepareStatement(
-                "UPDATE tbl_users SET u_password = ? WHERE u_username = ?"
+                "UPDATE tbl_user SET u_password = ? WHERE u_username = ?"
             );
             stmt.setString(1, hashedPassword);
             stmt.setString(2, un.getText());
@@ -169,7 +159,7 @@ public void logEvent(int userId, String username, String description) {
 
                 // Try to log the password reset
                 try {
-                    String query2 = "SELECT * FROM tbl_users WHERE u_username = ?";
+                    String query2 = "SELECT * FROM tbl_user WHERE u_username = ?";
                     PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
                     pstmt.setString(1, un.getText());
 
@@ -213,18 +203,22 @@ public void logEvent(int userId, String username, String description) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         un = new javax.swing.JTextField();
+        Search = new javax.swing.JButton();
         sq = new javax.swing.JComboBox<>();
         ans = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Newpass = new javax.swing.JPasswordField();
-        Submit = new javax.swing.JButton();
-        Search = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        Submit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -232,30 +226,11 @@ public void logEvent(int userId, String username, String description) {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Username");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, -1));
-        jPanel2.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 180, 40));
-
-        sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your first pet?", "What's the lastname of your Mother?", "What's your favorite food?", "What's your favorite Color? What's your birth month?" }));
-        jPanel2.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 230, -1));
-        jPanel2.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 180, 40));
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel2.setText("New Password");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
-        jPanel2.add(Newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 190, 40));
-
-        Submit.setText("Submit");
-        Submit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SubmitMouseClicked(evt);
-            }
-        });
-        jPanel2.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 80, 30));
+        jPanel1.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 230, 30));
 
         Search.setText("Search");
         Search.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,7 +238,22 @@ public void logEvent(int userId, String username, String description) {
                 SearchMouseClicked(evt);
             }
         });
-        jPanel2.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 80, 40));
+        jPanel1.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 80, 30));
+
+        sq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your first pet?", "What's the lastname of your Mother?", "What's your favorite food?", "What's your favorite Color? What's your birth month?" }));
+        sq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sqActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 280, -1));
+        jPanel1.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 230, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("New Password");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, 30));
+        jPanel1.add(Newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 230, 30));
 
         jButton1.setText("Cancel");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -271,15 +261,36 @@ public void logEvent(int userId, String username, String description) {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 90, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 540, 340));
+        Submit.setText("Submit");
+        Submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SubmitMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 90, 30));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic", 3, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("FORGOT PASSWORD");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 390, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 490));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel4.setText("Login here");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 70, 20));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel5.setText("Remember your passsword? ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 180, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,7 +318,7 @@ public void logEvent(int userId, String username, String description) {
 
     try {
         PreparedStatement stmt = con.prepareStatement(
-            "SELECT security_question, security_answer FROM tbl_users WHERE u_username = ?"
+            "SELECT security_question, security_answer FROM tbl_user WHERE u_username = ?"
         );
         stmt.setString(1, username);
         ResultSet rs = stmt.executeQuery();
@@ -342,6 +353,16 @@ public void logEvent(int userId, String username, String description) {
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void sqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sqActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+      DHPMAIN m = new DHPMAIN();
+        m.setVisible(true);
+        this.dispose();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -385,11 +406,13 @@ public void logEvent(int userId, String username, String description) {
     private javax.swing.JButton Submit;
     private javax.swing.JTextField ans;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JComboBox<String> sq;
     private javax.swing.JTextField un;
     // End of variables declaration//GEN-END:variables

@@ -18,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -68,7 +67,7 @@ public class CreateUser extends javax.swing.JFrame {
     dbConnector dbc = new dbConnector();
     
     try {
-        String query = "SELECT * FROM tbl_users WHERE u_username = '" + username + "' OR u_email = '" + email + "'";
+        String query = "SELECT * FROM tbl_user WHERE u_username = '" + username + "' OR u_email = '" + email + "'";
         ResultSet resultSet = dbc.getData(query);
         
         if (resultSet.next()) {
@@ -96,7 +95,7 @@ public class CreateUser extends javax.swing.JFrame {
     dbConnector dbc = new dbConnector();
         
      try{
-            String query = "SELECT * FROM tbl_users  WHERE (u_username = '" +us.getText()+ "' OR u_email = '" +mail.getText()+ "') AND u_id != '"+uid.getText()+"'";
+            String query = "SELECT * FROM tbl_user  WHERE (u_username = '" +us.getText()+ "' OR u_email = '" +mail.getText()+ "') AND u_id != '"+uid.getText()+"'";
             ResultSet resultSet = dbc.getData(query);
            
             if(resultSet.next()){
@@ -246,22 +245,16 @@ public class CreateUser extends javax.swing.JFrame {
         ans = new javax.swing.JTextField();
         select = new javax.swing.JButton();
         remove = new javax.swing.JButton();
-        add = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         uid = new javax.swing.JTextField();
-        del = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         ln = new javax.swing.JTextField();
-        cl = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         mail = new javax.swing.JTextField();
-        cc = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         us = new javax.swing.JTextField();
-        rf = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         pw = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
@@ -269,6 +262,11 @@ public class CreateUser extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         stat = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        add = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        cc = new javax.swing.JButton();
+        cl = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -284,7 +282,7 @@ public class CreateUser extends javax.swing.JFrame {
                 checkActionPerformed(evt);
             }
         });
-        jPanel10.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, -1, 30));
+        jPanel10.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, 30));
 
         u_image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -309,6 +307,8 @@ public class CreateUser extends javax.swing.JFrame {
 
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your first pet?", "What's the lastname of your Mother?", "What's your favorite food?", "What's your favorite Color?", "What's your birth month?" }));
         jPanel10.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
+
+        ans.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jPanel10.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 240, 30));
 
         select.setBackground(new java.awt.Color(255, 255, 255));
@@ -331,16 +331,6 @@ public class CreateUser extends javax.swing.JFrame {
         });
         jPanel10.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 80, 30));
 
-        add.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        add.setForeground(new java.awt.Color(255, 0, 0));
-        add.setText("ADD");
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
-        jPanel10.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 90, 30));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("User ID");
@@ -350,21 +340,12 @@ public class CreateUser extends javax.swing.JFrame {
         uid.setEnabled(false);
         jPanel10.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 190, 30));
 
-        del.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        del.setForeground(new java.awt.Color(255, 51, 51));
-        del.setText("DELETE");
-        del.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delActionPerformed(evt);
-            }
-        });
-        jPanel10.add(del, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 90, 30));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("First Name");
         jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 100, 30));
 
+        fn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         fn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,69 +359,34 @@ public class CreateUser extends javax.swing.JFrame {
         jLabel3.setText("Last Name");
         jPanel10.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 100, 30));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton1.setText("UPDATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, 90, 30));
-
+        ln.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         ln.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel10.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 190, 30));
-
-        cl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        cl.setForeground(new java.awt.Color(0, 0, 255));
-        cl.setText("CLEAR");
-        cl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clActionPerformed(evt);
-            }
-        });
-        jPanel10.add(cl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 90, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Email");
         jPanel10.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 100, 30));
 
+        mail.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         mail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel10.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 190, 30));
-
-        cc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        cc.setForeground(new java.awt.Color(153, 0, 153));
-        cc.setText("CANCEL");
-        cc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ccActionPerformed(evt);
-            }
-        });
-        jPanel10.add(cc, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Username");
         jPanel10.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 90, 30));
 
+        us.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         us.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel10.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 190, 30));
-
-        rf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rf.setForeground(new java.awt.Color(102, 0, 255));
-        rf.setText("REFRESH");
-        rf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rfActionPerformed(evt);
-            }
-        });
-        jPanel10.add(rf, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 90, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Password");
         jPanel10.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 100, 30));
 
+        pw.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         pw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwActionPerformed(evt);
@@ -453,8 +399,8 @@ public class CreateUser extends javax.swing.JFrame {
         jLabel9.setText("User Status");
         jPanel10.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 100, 30));
 
-        ut.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
+        ut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Patient", "Medical Staff" }));
         jPanel10.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 190, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -462,15 +408,66 @@ public class CreateUser extends javax.swing.JFrame {
         jLabel8.setText("User Type");
         jPanel10.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 100, 30));
 
-        stat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        stat.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
         jPanel10.add(stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 190, 30));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setText("CREATE USER");
-        jPanel10.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jPanel10.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 590));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
+        jPanel1.setLayout(null);
+
+        add.setBackground(new java.awt.Color(204, 204, 204));
+        add.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        add.setText("ADD");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel1.add(add);
+        add.setBounds(40, 170, 130, 40);
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton1.setText("UPDATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(40, 230, 130, 40);
+
+        cc.setBackground(new java.awt.Color(204, 204, 204));
+        cc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cc.setText("CANCEL");
+        cc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cc);
+        cc.setBounds(40, 420, 130, 40);
+
+        cl.setBackground(new java.awt.Color(204, 204, 204));
+        cl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cl.setForeground(new java.awt.Color(255, 51, 51));
+        cl.setText("CLEAR");
+        cl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cl);
+        cl.setBounds(40, 290, 130, 40);
+
+        jPanel10.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 200, 490));
+
+        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 490));
 
         pack();
         setLocationRelativeTo(null);
@@ -485,8 +482,8 @@ public class CreateUser extends javax.swing.JFrame {
     String uname = us.getText().trim();
     String pass = pw.getText().trim();
     String email = mail.getText().trim();
-    String status = ut.getSelectedItem().toString().trim();
-    String type = stat.getSelectedItem().toString();
+    String status = stat.getSelectedItem().toString().trim();
+    String type = ut.getSelectedItem().toString();
     String question = sq.getSelectedItem().toString();
     String answer = ans.getText().trim();
 
@@ -524,7 +521,7 @@ public class CreateUser extends javax.swing.JFrame {
         Files.copy(selectedFile.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
         // Insert user into DB
-        String insertQuery = "INSERT INTO tbl_users (u_fname, u_lname, u_username, u_status, u_password, u_email, u_type, u_image, security_question, security_answer) "
+        String insertQuery = "INSERT INTO tbl_user (u_fname, u_lname, u_username, u_status, u_password, u_email, u_type, u_image, security_question, security_answer) "
                            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = dbc.getConnection();
@@ -557,7 +554,7 @@ try (PreparedStatement logPst = conn.prepareStatement(logQuery)) {
                 }
 
                 JOptionPane.showMessageDialog(null, "Registered Successfully!");
-                new AdminRecords().setVisible(true);
+                new Records().setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Registration Failed!");
@@ -572,20 +569,18 @@ try (PreparedStatement logPst = conn.prepareStatement(logQuery)) {
         // TODO add your handling code here:
     }//GEN-LAST:event_fnActionPerformed
 
-    private void rfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rfActionPerformed
-
-    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
-                  // TODO add your handling code here:
-    }//GEN-LAST:event_delActionPerformed
-
     private void clActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clActionPerformed
-        // TODO add your handling code here:
+        fn.setText("");
+            ln.setText("");
+            mail.setText("");
+            us.setText("");
+            pw.setText("");
+           sq.setSelectedIndex(0);
+            ans.setText("");           // TODO add your handling code here:
     }//GEN-LAST:event_clActionPerformed
 
     private void ccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccActionPerformed
-       AdminRecords usf = new AdminRecords();
+       Records usf = new Records();
        usf.setVisible(true);
        this.dispose();
        
@@ -646,7 +641,7 @@ try {
     String hashedPassword = passwordHasher.hashPassword(password);
 
     dbConnector dbc = new dbConnector();
-    String checkQuery = "SELECT COUNT(*) FROM tbl_users WHERE (u_username = ? OR u_email = ?) AND u_id != ?";
+    String checkQuery = "SELECT COUNT(*) FROM tbl_user WHERE (u_username = ? OR u_email = ?) AND u_id != ?";
 
     try (Connection conn = dbc.getConnection();
          PreparedStatement pst = conn.prepareStatement(checkQuery)) {
@@ -663,26 +658,26 @@ try {
         }
 
         // ✅ Corrected the column order in the UPDATE query
-        String updateQuery = "UPDATE tbl_users SET u_fname = ?, u_lname = ?, u_username = ?, u_email = ?, u_password = ?, u_type = ?, u_status = ? WHERE u_id = ?";
+        String updateQuery = "UPDATE tbl_user SET u_fname = ?, u_lname = ?, u_username = ?, u_email = ?, u_password = ?, u_type = ?, u_status = ? WHERE u_id = ?";
 
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/money_remittance", "root", "");
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dhpapp", "root", "");
              PreparedStatement updatePst = con.prepareStatement(updateQuery)) {
             
             
-            String query = "SELECT * FROM tbl_users WHERE u_id = '"+sess.getUid()+"'";
+            String query = "SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'";
             ResultSet rs = dbc.getData(query);
             if(rs.next())
             {
                 String npass = rs.getString("u_password");
 
-                updatePst.setString(1, firstName);   // First name
-                updatePst.setString(2, lastName);    // Last name
-                updatePst.setString(3, username);    // Username
-                updatePst.setString(4, email);       // Email
-                updatePst.setString(5, npass);  // Store hashed password
-                updatePst.setString(6, statusValue); // Status (Corrected order)
-                updatePst.setString(7, type);        // Type (Corrected order)
-                updatePst.setInt(8, Integer.parseInt(id));  // User ID
+                updatePst.setString(1, firstName);   
+                updatePst.setString(2, lastName);    
+                updatePst.setString(3, username);   
+                updatePst.setString(4, email);       
+                updatePst.setString(5, npass);  
+                updatePst.setString(6, statusValue); 
+                updatePst.setString(7, type);        
+                updatePst.setInt(8, Integer.parseInt(id)); 
                 
 
 
@@ -690,7 +685,7 @@ try {
                 int updated = updatePst.executeUpdate();
                 if (updated > 0) {
                     JOptionPane.showMessageDialog(this, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    new AdminRecords().setVisible(true);
+                    new Records().setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Update failed!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -780,7 +775,6 @@ try {
     private javax.swing.JButton cc;
     private javax.swing.JCheckBox check;
     private javax.swing.JButton cl;
-    private javax.swing.JButton del;
     public javax.swing.JTextField fn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -793,13 +787,13 @@ try {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mail;
     public javax.swing.JPasswordField pw;
     public javax.swing.JButton remove;
-    private javax.swing.JButton rf;
     public javax.swing.JButton select;
     private javax.swing.JComboBox<String> sq;
     public javax.swing.JComboBox<String> stat;

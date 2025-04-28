@@ -19,10 +19,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author SCC-COLLEGE
- */
 public class Signup extends javax.swing.JFrame {
 
     
@@ -335,7 +331,7 @@ public class Signup extends javax.swing.JFrame {
         String secAnswer = passwordHasher.hashPassword(answ.getText()); // 🔐 Hash security answer
 
         // ✅ Added balance field
-        String query = "INSERT INTO tbl_users (u_fname, u_lname, u_email, u_username, u_password, security_question, security_answer, u_type, u_image, u_status) "
+        String query = "INSERT INTO tbl_user (u_fname, u_lname, u_email, u_username, u_password, security_question, security_answer, u_type, u_image, u_status) "
                      + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Null', 'Pending')";
 
         try (Connection con = dbc.getConnection();
@@ -347,7 +343,7 @@ public class Signup extends javax.swing.JFrame {
             stmt.setString(5, pass);           // Hashed password
             stmt.setString(6, secQuestion);
             stmt.setString(7, secAnswer);      // Hashed security answer
-           // stmt.setString(8, ut.getSelectedItem().toString());
+            stmt.setString(8, type.getSelectedItem().toString());
 
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted > 0) {
