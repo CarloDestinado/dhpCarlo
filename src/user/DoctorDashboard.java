@@ -171,20 +171,27 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        u_image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        u_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wave.png"))); // NOI18N
+        u_image.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        u_image.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel2.add(u_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 100));
 
         jPanel3.add(jPanel2);
         jPanel2.setBounds(30, 10, 110, 100);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
         jButton2.setText("LOG-OUT");
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel3.add(jButton2);
-        jButton2.setBounds(50, 340, 90, 30);
+        jButton2.setBounds(20, 330, 150, 60);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(530, 0, 190, 420);
@@ -206,7 +213,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         acc_email.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         acc_email.setText("email sa katawhan");
-        jPanel6.add(acc_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 410, 30));
+        jPanel6.add(acc_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 410, 30));
 
         acc_lname.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         acc_lname.setText("last name sa katawhan");
@@ -218,7 +225,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         acc_uname.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         acc_uname.setText("username sa katawhan");
-        jPanel6.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 430, 30));
+        jPanel6.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 430, 30));
 
         jPanel1.add(jPanel6);
         jPanel6.setBounds(0, 0, 530, 400);

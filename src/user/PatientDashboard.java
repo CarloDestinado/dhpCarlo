@@ -90,6 +90,7 @@ public class PatientDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -107,6 +108,8 @@ public class PatientDashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/view.png"))); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -120,11 +123,11 @@ public class PatientDashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel1.setText("WELCOME TO DIAGNOSIS HEALTH PROFILE");
-        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel4.setText("Health Data, Made Simple");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 510, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 510, 20));
 
         acc_type.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         acc_type.setText("patient");
@@ -153,6 +156,9 @@ public class PatientDashboard extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        u_image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        u_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wave.png"))); // NOI18N
         jPanel2.add(u_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 100));
 
         jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 110, 100));
@@ -176,7 +182,7 @@ public class PatientDashboard extends javax.swing.JFrame {
         });
         jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 20, 160, -1));
 
-        jPanel6.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 160, 60));
+        jPanel6.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 160, 60));
 
         jPanel4.setBackground(new java.awt.Color(0, 51, 153));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,16 +203,18 @@ public class PatientDashboard extends javax.swing.JFrame {
         });
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 160, -1));
 
-        jPanel6.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 160, 60));
+        jPanel6.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 160, 60));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
         jButton2.setText("LOG-OUT");
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 90, 30));
+        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 160, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -331,6 +339,7 @@ ViewDiagnosisDoctor vd = new ViewDiagnosisDoctor();
     private javax.swing.JLabel acc_uname;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;

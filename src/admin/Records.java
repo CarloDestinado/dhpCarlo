@@ -310,7 +310,7 @@ public class Records extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/VVT.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-100.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, 90));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -332,15 +332,17 @@ public class Records extends javax.swing.JFrame {
         jPanel1.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, -1));
 
         add.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add-user.png"))); // NOI18N
         add.setText("ADD");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, 40));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 60));
 
         update.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update-user.png"))); // NOI18N
         update.setText("UPDATE");
         update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -352,28 +354,30 @@ public class Records extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 140, 40));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 150, 60));
 
         register1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        register1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete-user.png"))); // NOI18N
         register1.setText("DELETE");
         register1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 register1ActionPerformed(evt);
             }
         });
-        jPanel1.add(register1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 140, 40));
+        jPanel1.add(register1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 150, 60));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back icon.png"))); // NOI18N
         jLabel5.setText("back");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 200, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 200, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 450));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -389,7 +393,7 @@ public class Records extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane1);
 
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 500, 420));
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 500, 450));
 
         pack();
         setLocationRelativeTo(null);

@@ -95,6 +95,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
@@ -133,6 +134,12 @@ public class DHPMAIN extends javax.swing.JFrame {
         ADUSERT.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         ADUSERT.setText(" Username");
         jPanel1.add(ADUSERT, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 130, 40));
+
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
         jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 320, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -157,18 +164,24 @@ public class DHPMAIN extends javax.swing.JFrame {
         right.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 125, -1, -1));
         right.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("DIAGNOSIS HEATLH PROFILE");
-        right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 350, -1));
+        jLabel9.setText("Health Data, Made Simple");
+        right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 350, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/log in bg.png"))); // NOI18N
         right.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 280, 480, 410));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-medical-records-100.png"))); // NOI18N
-        right.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 100, 120));
+        right.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 100, 120));
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("DIAGNOSIS HEATLH PROFILE");
+        right.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 350, -1));
 
         jPanel1.add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 356, 590));
 
@@ -194,15 +207,15 @@ public class DHPMAIN extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 120, 30));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Forgot Password?");
+        jLabel11.setText("Forgot Password? Click Here");
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 420, 170, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 200, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,6 +299,10 @@ try {
                     this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jLabel11MouseClicked
 
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +346,7 @@ try {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

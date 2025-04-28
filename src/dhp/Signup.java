@@ -122,7 +122,7 @@ public class Signup extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         stats = new javax.swing.JLabel();
         type = new javax.swing.JComboBox<>();
@@ -133,6 +133,7 @@ public class Signup extends javax.swing.JFrame {
         check = new javax.swing.JCheckBox();
         sq = new javax.swing.JComboBox<>();
         answ = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -197,13 +198,14 @@ public class Signup extends javax.swing.JFrame {
         jPanel41.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
         jPanel41.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SIGN UP FORM");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 840, 50));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("WELCOME TO DIAGNOSIS HEALTH PROFILE");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 750, 50));
 
         jPanel41.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 70));
 
@@ -219,7 +221,7 @@ public class Signup extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel41.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, 110, 40));
+        jPanel41.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 110, 40));
 
         stats.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         stats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -241,7 +243,7 @@ public class Signup extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel41.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 110, 40));
+        jPanel41.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 110, 40));
         jPanel41.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 270, 30));
 
         dob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -262,16 +264,21 @@ public class Signup extends javax.swing.JFrame {
 
         sq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your First pet?", "What's the lastname of your Mother?", "What's your favorite Food?", "What's your favorite Color?", " " }));
-        jPanel41.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 270, -1));
+        jPanel41.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 270, -1));
 
         answ.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel41.add(answ, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 180, 30));
+        jPanel41.add(answ, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 180, 30));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("SIGN UP FORM");
+        jPanel41.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 240, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel41, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, 751, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,6 +441,7 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel41;

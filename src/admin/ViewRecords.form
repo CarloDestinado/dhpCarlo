@@ -47,7 +47,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="VIEW DIAGNOSIS"/>
+            <Property name="text" type="java.lang.String" value="VIEW TRANSACTION"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -79,20 +79,20 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="70" width="640" height="400"/>
+              <AbsoluteConstraints x="10" y="71" width="640" height="400"/>
             </Constraint>
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tbldiagnosis">
+            <Component class="javax.swing.JTable" name="tbltransaction">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
-                    <Column editable="true" title="ID" type="java.lang.Object"/>
+                    <Column editable="true" title="Loan ID" type="java.lang.Object"/>
                     <Column editable="true" title="Username" type="java.lang.Object"/>
-                    <Column editable="true" title="Fname" type="java.lang.Object"/>
-                    <Column editable="true" title="Lname" type="java.lang.Object"/>
+                    <Column editable="true" title="Loan_Amount" type="java.lang.Object"/>
+                    <Column editable="true" title="Description" type="java.lang.Object"/>
                     <Column editable="true" title="Date" type="java.lang.Object"/>
                     <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>

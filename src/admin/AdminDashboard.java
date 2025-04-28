@@ -180,7 +180,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel3.add(jLabel3);
         jLabel3.setBounds(30, 110, 590, 22);
 
-        logstbl.setBackground(new java.awt.Color(51, 153, 255));
+        logstbl.setBackground(new java.awt.Color(204, 204, 204));
         logstbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         logstbl.setForeground(new java.awt.Color(255, 255, 255));
         logstbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -197,7 +197,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(logstbl);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(230, 190, 640, 250);
+        jScrollPane1.setBounds(230, 190, 640, 280);
 
         jPanel6.setBackground(new java.awt.Color(51, 153, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -273,6 +273,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5.setBounds(10, 260, 210, 0);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
         jButton2.setText("LOG-OUT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,7 +281,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton2);
-        jButton2.setBounds(120, 410, 100, 30);
+        jButton2.setBounds(20, 400, 200, 70);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -319,6 +320,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel10.setBackground(new java.awt.Color(0, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/account.png"))); // NOI18N
         jLabel10.setText("ACCOUNT");
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -341,6 +343,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/records.png"))); // NOI18N
         jLabel7.setText("VIEW RECORDS");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -364,6 +367,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(0, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
         jLabel5.setText("USERS");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -417,7 +421,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-     ViewDiagnosis vd = new ViewDiagnosis();
+     ViewRecords vd = new ViewRecords();
         vd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
@@ -435,7 +439,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ViewDiagnosis vd = new ViewDiagnosis();
+        ViewRecords vd = new ViewRecords();
                 vd.setVisible(true);
                 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
@@ -453,13 +457,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ViewDiagnosis vt = new ViewDiagnosis();
+        ViewRecords vt = new ViewRecords();
         vt.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
-ViewDiagnosis vt = new ViewDiagnosis();
+ViewRecords vt = new ViewRecords();
         vt.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel9MouseClicked

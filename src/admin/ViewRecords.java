@@ -6,103 +6,55 @@
 package admin;
 
 import config.dbConnector;
-import config.session;
-import java.awt.Color;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author milan
  */
-public class ViewDiagnosis extends javax.swing.JFrame {
+public class ViewRecords extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewTransaction
      */
-    public ViewDiagnosis() {
+    public ViewRecords() {
         initComponents();
          displayTransactions();
     }         
    
   public void displayTransactions() {
-    displayData();
-    }   
-    
-    
-    private JComboBox<String> type;
-    
-        Color navcolor = new Color(51,255,255);
-        Color hovercolor = new Color(204,255,204);
-    
-     public void displayData(){
-        try{
-            dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_username, u_email, u_status FROM tbl_user");
-            tbldiagnosis.setModel(DbUtils.resultSetToTableModel(rs));
-             rs.close();
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
+    try {
+        dbConnector connector = new dbConnector(); // Create an object first
+        Connection conn = connector.getConnection(); // Get the connection using the object
+        Statement stmt = conn.createStatement();
         
+        String sql = "SELECT loan_id, u_username, loan_amount, loan_description, loan_date, loan_status FROM tbl_loans";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        DefaultTableModel model = (DefaultTableModel) tbltransaction.getModel();
+        model.setRowCount(0); // Clear existing data
+
+        while (rs.next()) {
+            Object[] row = {
+                rs.getInt("loan_id"),
+                rs.getString("u_username"),
+                rs.getDouble("loan_amount"),
+                rs.getString("loan_description"),
+                rs.getDate("loan_date"),
+                rs.getString("loan_status")
+            };
+            model.addRow(row);
         }
-        
-    
+
+        conn.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error loading transactions: " + e.getMessage());
     }
-    
-      
-        DefaultTableModel model = new DefaultTableModel();
-        
-         public void tableChanged(TableModelEvent e) throws SQLException {
-        if (e.getType() == TableModelEvent.UPDATE) {
-            int row = e.getFirstRow();
-            int column = e.getColumn();
-
-            
-            if (row == -1 || column == -1) {
-                return; 
-            }
-        }
-         session sess = session.getInstance();
-    
-    String[] columnNames = {"u_id", "u_email", "u_type", "u_username", "u_status", "diagnosis"};
-model.setColumnIdentifiers(columnNames);
-model.setRowCount(0);
-
-String sql = "SELECT u.u_id, u.u_email, u.u_type, u.u_username, u.u_status, d.diagnosis " +
-             "FROM tbl_user u " +
-             "LEFT JOIN tbl_diagnosis d ON d_id = d_id " +
-             "WHERE d_id != '" + sess.getUid() + "';";
-
-try (Connection connect = new dbConnector().getConnection();
-     PreparedStatement pst = connect.prepareStatement(sql);
-     ResultSet rs = pst.executeQuery()) {
-
-    while (rs.next()) {
-        Object[] row = {
-            rs.getInt("u_id"),
-            rs.getString("u_email"),
-            rs.getString("u_type"),
-            rs.getString("u_username"),
-            rs.getString("u_status"),
-            rs.getString("diagnosis") // add diagnosis
-        };
-        model.addRow(row);
-    }
-
-
-
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    }
+}
 
     
     
@@ -120,7 +72,7 @@ try (Connection connect = new dbConnector().getConnection();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tbldiagnosis = new javax.swing.JTable();
+        tbltransaction = new javax.swing.JTable();
         cancel1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,7 +83,7 @@ try (Connection connect = new dbConnector().getConnection();
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
-        jLabel1.setText("VIEW DIAGNOSIS");
+        jLabel1.setText("VIEW TRANSACTION");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 670, 100));
@@ -139,7 +91,7 @@ try (Connection connect = new dbConnector().getConnection();
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbldiagnosis.setModel(new javax.swing.table.DefaultTableModel(
+        tbltransaction.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -147,12 +99,12 @@ try (Connection connect = new dbConnector().getConnection();
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Username", "Fname", "Lname", "Date", "Status"
+                "Loan ID", "Username", "Loan_Amount", "Description", "Date", "Status"
             }
         ));
-        jScrollPane6.setViewportView(tbldiagnosis);
+        jScrollPane6.setViewportView(tbltransaction);
 
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 640, 400));
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 71, 640, 400));
 
         cancel1.setBackground(new java.awt.Color(255, 255, 255));
         cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -181,8 +133,8 @@ try (Connection connect = new dbConnector().getConnection();
 
     private void cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel1ActionPerformed
 
-        AdminDashboard ad = new AdminDashboard();
-        ad.setVisible(true);
+        AdminDashboard ru = new AdminDashboard();
+        ru.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancel1ActionPerformed
 
@@ -203,13 +155,13 @@ try (Connection connect = new dbConnector().getConnection();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDiagnosis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDiagnosis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDiagnosis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDiagnosis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -217,7 +169,7 @@ try (Connection connect = new dbConnector().getConnection();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewDiagnosis().setVisible(true);
+                new ViewRecords().setVisible(true);
             }
         });
     }
@@ -228,6 +180,6 @@ try (Connection connect = new dbConnector().getConnection();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable tbldiagnosis;
+    private javax.swing.JTable tbltransaction;
     // End of variables declaration//GEN-END:variables
 }
