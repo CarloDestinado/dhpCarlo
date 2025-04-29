@@ -255,8 +255,8 @@ public class PatientDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-       DoctorDetails dd = new DoctorDetails();
-        dd.setVisible(true);
+       PatientDetails pd = new PatientDetails();
+        pd.setVisible(true);
         this.dispose();
         
         
@@ -270,8 +270,8 @@ ViewDiagnosisDoctor vd = new ViewDiagnosisDoctor();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        DoctorDetails dd = new DoctorDetails();
-                dd.setVisible(true);
+        PatientDetails pd = new PatientDetails();
+                pd.setVisible(true);
                 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 

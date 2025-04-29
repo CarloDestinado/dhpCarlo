@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2025 at 04:40 PM
+-- Generation Time: Apr 29, 2025 at 02:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,9 +39,7 @@ CREATE TABLE `tbl_diagnosis` (
 --
 
 INSERT INTO `tbl_diagnosis` (`d_id`, `patient`, `diagnosis`, `doctor`) VALUES
-(1, 'carlo', 'sakit sa tuhod', ''),
-(2, 'carlo', 'sakit sa tuhod', ''),
-(3, 'carlo', 'carlo', '');
+(5, 'Carlo', 'High Fever', 'Doc. Destinado Carlo');
 
 -- --------------------------------------------------------
 
@@ -65,15 +63,20 @@ CREATE TABLE `tbl_log` (
 --
 
 INSERT INTO `tbl_log` (`log_id`, `u_id`, `u_username`, `login_time`, `u_type`, `log_status`, `logout_time`, `log_description`) VALUES
-(160, 35, 'qwee', '2025-04-28 00:57:53', 'Admin', 'Inactive', '2025-04-28 03:43:36', 'Admin Added a New Account: meow'),
-(161, 35, 'qwee', '2025-04-28 01:52:54', 'Admin', 'Inactive', '2025-04-28 03:43:36', 'Deleted user account with ID: 37'),
-(162, 40, 'doctor', '2025-04-28 01:55:09', 'Success - User Action', 'Active', NULL, 'New user registered: doctor'),
-(163, 40, 'doctor', '2025-04-28 04:03:22', 'Success - User Action', 'Active', NULL, 'User Changed Their Password'),
-(164, 40, 'doctor', '2025-04-28 04:29:55', 'Medical Staff', 'Active', NULL, 'User Changed Their Details'),
-(165, 35, 'qwee', '2025-04-28 07:41:16', 'Admin', 'Inactive', '2025-04-28 07:42:58', 'Deleted user account with ID: 39'),
-(166, 35, 'qwee', '2025-04-28 07:42:53', 'Admin', 'Inactive', '2025-04-28 07:42:58', 'Admin Added a New Account: merry'),
-(167, 35, 'qwee', '2025-04-28 07:56:54', 'Admin', 'Active', NULL, 'Admin Added a New Account: patient'),
-(168, 43, 'tibok', '2025-04-28 11:53:54', 'Success - User Action', 'Active', NULL, 'New user registered: tibok');
+(169, 44, 'patient', '2025-04-28 23:39:47', 'Success - User Action', 'Active', NULL, 'New user registered: patient'),
+(170, 45, 'admin', '2025-04-28 23:41:16', 'Success - User Action', 'Inactive', '2025-04-28 23:50:58', 'New user registered: admin'),
+(171, 46, 'doctor', '2025-04-28 23:42:39', 'Success - User Action', 'Active', NULL, 'New user registered: doctor'),
+(172, 46, 'doctor', '2025-04-28 23:46:06', 'Success - User Action', 'Active', NULL, 'diagnosed patient: Carlo'),
+(173, 46, 'doctor', '2025-04-28 23:47:03', 'Medical Staff', 'Active', NULL, 'User Changed Their Details'),
+(174, 45, 'admin', '2025-04-28 23:47:51', 'Admin', 'Inactive', '2025-04-28 23:50:58', 'User Changed Their Details'),
+(175, 45, 'admin', '2025-04-28 23:50:00', 'Admin', 'Inactive', '2025-04-28 23:50:58', 'Admin Added a New Account: test'),
+(176, 44, 'patient', '2025-04-28 23:52:19', 'Patient', 'Active', NULL, 'User Changed Their Details'),
+(177, 45, 'admin', '2025-04-29 00:03:38', 'Admin', 'Inactive', '2025-04-29 00:04:09', 'User Changed Their Details'),
+(178, 45, 'admin', '2025-04-29 00:04:05', 'Admin', 'Inactive', '2025-04-29 00:04:09', 'User Changed Their Details'),
+(179, 44, 'patient', '2025-04-29 00:04:45', 'Patient', 'Active', NULL, 'User Changed Their Details'),
+(180, 44, 'patient', '2025-04-29 00:07:08', 'Patient', 'Active', NULL, 'User Changed Their Details'),
+(181, 47, 'testtest', '2025-04-29 00:07:53', 'Patient', 'Active', NULL, 'User Changed Their Details'),
+(182, 45, 'admin', '2025-04-29 00:09:00', 'Admin', 'Inactive', '2025-04-29 00:09:10', 'User Changed Their Details');
 
 -- --------------------------------------------------------
 
@@ -92,7 +95,8 @@ CREATE TABLE `tbl_specialty` (
 --
 
 INSERT INTO `tbl_specialty` (`s_id`, `s_specialty`, `u_id`) VALUES
-(4, 'tig hilot', 40);
+(5, '', 46),
+(6, '', 44);
 
 -- --------------------------------------------------------
 
@@ -119,13 +123,10 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_username`, `u_password`, `u_type`, `u_status`, `security_question`, `security_answer`, `u_image`) VALUES
-(35, 'qwe', 'qweqwe', 'qwe@gmail.com', 'qwee', 'DR6kwlbNUKKnzL/SKz2ZWfb9ML2EC5/zx8Ze5OId8G0=', 'Admin', 'Active', 'What\'s the name of your First pet?', 'DR6kwlbNUKKnzL/SKz2ZWfb9ML2EC5/zx8Ze5OId8G0=', 'src/images/backiee-98927-landscape.jpg'),
-(36, 'asdasd', 'asdasd', '123@gmail.com', 'asd', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'Patient', 'Active', 'What\'s the name of your First pet?', 'zUbeBghXPckSGy8/y/h6xipRM9kr4ZerWcxmsqrPQ7s=', 'Null'),
-(38, 'qwer', 'qwer', 'qwer@gmail.com', 'qwer', 'cPmAePssfXv7OuFzMLkeqgGBELA4lpebTIi/rtOAWQY=', 'Active', 'Admin', 'What\'s the name of your first pet?', 'FDPWiFkJAwQSCrM8VSNIVJKiTeaEZIELdwpZV7bWTKE=', 'qwer_backiee-217218-landscape.jpg'),
-(40, 'doc', 'tor', 'doc@gmail.com', 'doctor', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Medical Staff', 'Active', 'What\'s the name of your First pet?', 'WO3eh5s4MwUck8f+wARHnbZpav/WSbro28qxTxVwqmE=', 'src/images/backiee-98927-landscape.jpg'),
-(41, 'merry', 'joyce', 'm@gmail.com', 'merry', '73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=', 'Active', 'Patient', 'What\'s the name of your first pet?', '1ZTK7mu0xiIVQO4khZ9KJrB1cl9iwfprZz6eBnS2h3U=', 'merry_backiee-98927-landscape.jpg'),
-(42, 'a', 'a', 'a@gmail', 'patient', 'DR6kwlbNUKKnzL/SKz2ZWfb9ML2EC5/zx8Ze5OId8G0=', 'Patient', 'Active', 'What\'s the name of your first pet?', '1ZTK7mu0xiIVQO4khZ9KJrB1cl9iwfprZz6eBnS2h3U=', 'patient_backiee-98927-landscape.jpg'),
-(43, 'destinado', 'carlo', 'destinado@gmail.com', 'tibok', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s the name of your First pet?', 'aNnmAY2ohr/dfgLOh6WH7MXeGRME4REc2THUjNm8p0Y=', 'Null');
+(44, 'Carlo', 'Destinado', 'carlo@gmail.com', 'patient', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s the name of your First pet?', 'QEzde8EJxDL4zCRDtFvP6VmA9RByFcZFI25XeSmsPlI=', 'src/images/pfp1.jpg'),
+(45, 'tung tung', 'sahur', 'admin@gmail.com', 'admin', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Admin', 'Active', 'What\'s the name of your First pet?', 'DmGbTNNyDgD9OQ1iktpVqGPeqFo0l5W76XZnsz/C98k=', 'src/images/pfp2.jpg'),
+(46, 'Doc. Destinado', 'Carlo', 'doctor@gmail.com', 'doctor', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Medical Staff', 'Active', 'What\'s the name of your First pet?', 'rQ5BaE426Vp7FxjItL+8w1/G6nUrEtRBJwxJqrei3Co=', 'src/images/savedWallpaper.jpg'),
+(47, 'tralalero', 'tralala', 'test@gmail.com', 'testtest', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s the lastname of your Mother?', 'n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=', 'src/images/pfp4.jpg');
 
 --
 -- Indexes for dumped tables
@@ -165,25 +166,25 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
 ALTER TABLE `tbl_diagnosis`
-  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_log`
 --
 ALTER TABLE `tbl_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `tbl_specialty`
 --
 ALTER TABLE `tbl_specialty`
-  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables

@@ -317,10 +317,10 @@ public class PatientDetails extends javax.swing.JFrame {
         });
         jPanel2.add(acc_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 250, 30));
 
-        acc_name.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        acc_name.setFont(new java.awt.Font("Times New Roman", 3, 20)); // NOI18N
         acc_name.setForeground(new java.awt.Color(255, 255, 255));
         acc_name.setText("jLabel5");
-        jPanel2.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 300, 50));
+        jPanel2.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 380, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 400, 520));
 
@@ -441,8 +441,8 @@ public class PatientDetails extends javax.swing.JFrame {
 
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(this, "Profile updated successfully!");
-                DoctorDashboard ed = new DoctorDashboard();
-                ed.setVisible(true);
+                PatientDashboard pd = new PatientDashboard();
+                pd.setVisible(true);
                 this.dispose();
 
                 try {
@@ -540,13 +540,13 @@ public class PatientDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField acc_email;
-    private javax.swing.JTextField acc_fname;
+    public javax.swing.JTextField acc_email;
+    public javax.swing.JTextField acc_fname;
     private javax.swing.JLabel acc_id;
-    private javax.swing.JTextField acc_lname;
+    public javax.swing.JTextField acc_lname;
     private javax.swing.JLabel acc_name;
     private javax.swing.JLabel acc_type;
-    private javax.swing.JTextField acc_uname;
+    public javax.swing.JTextField acc_uname;
     public javax.swing.JButton cancel;
     private javax.swing.JLabel image;
     private javax.swing.JButton jButton1;
