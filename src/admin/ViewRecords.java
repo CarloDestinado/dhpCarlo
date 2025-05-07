@@ -23,38 +23,43 @@ public class ViewRecords extends javax.swing.JFrame {
      */
     public ViewRecords() {
         initComponents();
-         displayTransactions();
+         displayDiagnoses();
     }         
    
-  public void displayTransactions() {
-    try {
-        dbConnector connector = new dbConnector(); // Create an object first
-        Connection conn = connector.getConnection(); // Get the connection using the object
-        Statement stmt = conn.createStatement();
-        
-        String sql = "SELECT loan_id, u_username, loan_amount, loan_description, loan_date, loan_status FROM tbl_loans";
-        ResultSet rs = stmt.executeQuery(sql);
+    public void displayDiagnoses() {
+        try {
+            dbConnector connector = new dbConnector(); // Create an object first
+            Connection conn = connector.getConnection(); // Get the connection using the object
+            Statement stmt = conn.createStatement();
 
-        DefaultTableModel model = (DefaultTableModel) tbltransaction.getModel();
-        model.setRowCount(0); // Clear existing data
+            // Corrected SQL query based on your table structure
+            String sql = "SELECT d_id, u_id, patient, diagnosis, doctor "
+                    + "FROM tbl_diagnosis";
 
-        while (rs.next()) {
-            Object[] row = {
-                rs.getInt("loan_id"),
-                rs.getString("u_username"),
-                rs.getDouble("loan_amount"),
-                rs.getString("loan_description"),
-                rs.getDate("loan_date"),
-                rs.getString("loan_status")
-            };
-            model.addRow(row);
+            ResultSet rs = stmt.executeQuery(sql);
+
+            DefaultTableModel model = (DefaultTableModel) tbltransaction.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            // Loop through the result set and add each row to the table model
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getInt("d_id"), // Diagnosis ID
+                    rs.getInt("u_id"), // User ID
+                    rs.getString("patient"), // Patient
+                    rs.getString("diagnosis"), // Diagnosis
+                    rs.getString("doctor") // Doctor
+                };
+                model.addRow(row);
+            }
+
+            conn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error loading diagnoses: " + e.getMessage());
         }
-
-        conn.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error loading transactions: " + e.getMessage());
     }
-}
+
+
 
     
     
@@ -68,43 +73,33 @@ public class ViewRecords extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tbltransaction = new javax.swing.JTable();
         cancel1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
-        jLabel1.setText("VIEW TRANSACTION");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 670, 100));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbltransaction.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Loan ID", "Username", "Loan_Amount", "Description", "Date", "Status"
+                "d_id", "Doctor's ID", "Patient", "Diagnosis", "Doctor"
             }
         ));
         jScrollPane6.setViewportView(tbltransaction);
 
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 71, 640, 400));
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 640, 350));
 
         cancel1.setBackground(new java.awt.Color(255, 255, 255));
         cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -120,9 +115,13 @@ public class ViewRecords extends javax.swing.JFrame {
                 cancel1ActionPerformed(evt);
             }
         });
-        jPanel4.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 130, -1));
+        jPanel4.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 90, 40));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 660, 490));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
+        jLabel1.setText("DIAGNOSIS");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,7 +176,6 @@ public class ViewRecords extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton cancel1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tbltransaction;

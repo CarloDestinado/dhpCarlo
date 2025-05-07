@@ -158,27 +158,25 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 550));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 40)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DIAGNOSIS HEATLH PROFILE");
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(0, 80, 590, 34);
+        jLabel1.setBounds(40, 80, 590, 34);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel3.setText("Health Data, Made Simple");
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(30, 110, 590, 22);
+        jLabel3.setBounds(40, 110, 590, 22);
 
         logstbl.setBackground(new java.awt.Color(204, 204, 204));
         logstbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -197,7 +195,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(logstbl);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(230, 190, 640, 280);
+        jScrollPane1.setBounds(230, 190, 740, 400);
 
         jPanel6.setBackground(new java.awt.Color(51, 153, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -207,21 +205,21 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel6.add(u_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 130));
 
         jPanel3.add(jPanel6);
-        jPanel6.setBounds(700, 10, 140, 130);
+        jPanel6.setBounds(830, 10, 140, 130);
 
         acc_fname.setBackground(new java.awt.Color(255, 255, 255));
         acc_fname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fname.setText("ADMIN");
         jPanel3.add(acc_fname);
-        acc_fname.setBounds(750, 170, 41, 20);
+        acc_fname.setBounds(831, 160, 140, 20);
 
         acc_lname.setBackground(new java.awt.Color(255, 255, 255));
         acc_lname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lname.setText("ADMIN");
         jPanel3.add(acc_lname);
-        acc_lname.setBounds(730, 150, 70, 20);
+        acc_lname.setBounds(830, 140, 140, 20);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -281,7 +279,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton2);
-        jButton2.setBounds(20, 400, 200, 70);
+        jButton2.setBounds(20, 490, 200, 70);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -330,7 +328,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 60));
 
         jPanel3.add(jPanel8);
-        jPanel8.setBounds(20, 190, 200, 60);
+        jPanel8.setBounds(20, 230, 200, 60);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -353,7 +351,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel9.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 60));
 
         jPanel3.add(jPanel9);
-        jPanel9.setBounds(20, 260, 200, 60);
+        jPanel9.setBounds(20, 310, 200, 60);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -377,10 +375,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel10.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 60));
 
         jPanel3.add(jPanel10);
-        jPanel10.setBounds(20, 330, 200, 60);
+        jPanel10.setBounds(20, 400, 200, 60);
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 880, 500);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );
 
         pack();
         setLocationRelativeTo(null);

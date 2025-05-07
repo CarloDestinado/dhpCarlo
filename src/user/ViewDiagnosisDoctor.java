@@ -86,7 +86,7 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 160, 490, 290);
 
-        jButton4.setBackground(new java.awt.Color(0, 102, 102));
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setText("ADD DIAGNOSIS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

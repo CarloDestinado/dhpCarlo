@@ -476,8 +476,8 @@ public class PatientDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_updateActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ChangePass cp = new ChangePass();
-                cp.setVisible(true);
+        Pchangepass pp = new Pchangepass();
+                pp.setVisible(true);
                 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
 

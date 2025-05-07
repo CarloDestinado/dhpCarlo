@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2025 at 02:10 AM
+-- Generation Time: Apr 29, 2025 at 08:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_diagnosis` (
   `d_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
   `patient` varchar(255) NOT NULL,
   `diagnosis` varchar(255) NOT NULL,
   `doctor` varchar(225) NOT NULL
@@ -38,8 +39,9 @@ CREATE TABLE `tbl_diagnosis` (
 -- Dumping data for table `tbl_diagnosis`
 --
 
-INSERT INTO `tbl_diagnosis` (`d_id`, `patient`, `diagnosis`, `doctor`) VALUES
-(5, 'Carlo', 'High Fever', 'Doc. Destinado Carlo');
+INSERT INTO `tbl_diagnosis` (`d_id`, `u_id`, `patient`, `diagnosis`, `doctor`) VALUES
+(1, 44, 'TEST', 'TEST', 'TEST'),
+(9, 48, 'kupal', 'test', 'null null');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,9 @@ INSERT INTO `tbl_log` (`log_id`, `u_id`, `u_username`, `login_time`, `u_type`, `
 (179, 44, 'patient', '2025-04-29 00:04:45', 'Patient', 'Active', NULL, 'User Changed Their Details'),
 (180, 44, 'patient', '2025-04-29 00:07:08', 'Patient', 'Active', NULL, 'User Changed Their Details'),
 (181, 47, 'testtest', '2025-04-29 00:07:53', 'Patient', 'Active', NULL, 'User Changed Their Details'),
-(182, 45, 'admin', '2025-04-29 00:09:00', 'Admin', 'Inactive', '2025-04-29 00:09:10', 'User Changed Their Details');
+(182, 45, 'admin', '2025-04-29 00:09:00', 'Admin', 'Inactive', '2025-04-29 00:09:10', 'User Changed Their Details'),
+(183, 45, 'admin', '2025-04-29 03:42:56', 'Admin', 'Active', NULL, 'Admin Added a New Account: moganee'),
+(184, 48, 'moganee', '2025-04-29 06:39:27', 'Success - User Action', 'Active', NULL, 'diagnosed patient: kupal');
 
 -- --------------------------------------------------------
 
@@ -126,7 +130,8 @@ INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_username`, `
 (44, 'Carlo', 'Destinado', 'carlo@gmail.com', 'patient', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s the name of your First pet?', 'QEzde8EJxDL4zCRDtFvP6VmA9RByFcZFI25XeSmsPlI=', 'src/images/pfp1.jpg'),
 (45, 'tung tung', 'sahur', 'admin@gmail.com', 'admin', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Admin', 'Active', 'What\'s the name of your First pet?', 'DmGbTNNyDgD9OQ1iktpVqGPeqFo0l5W76XZnsz/C98k=', 'src/images/pfp2.jpg'),
 (46, 'Doc. Destinado', 'Carlo', 'doctor@gmail.com', 'doctor', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Medical Staff', 'Active', 'What\'s the name of your First pet?', 'rQ5BaE426Vp7FxjItL+8w1/G6nUrEtRBJwxJqrei3Co=', 'src/images/savedWallpaper.jpg'),
-(47, 'tralalero', 'tralala', 'test@gmail.com', 'testtest', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s the lastname of your Mother?', 'n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=', 'src/images/pfp4.jpg');
+(47, 'tralalero', 'tralala', 'test@gmail.com', 'testtest', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s the lastname of your Mother?', 'n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=', 'src/images/pfp4.jpg'),
+(48, 'kupal', 'koh', 'a@gmail', 'moganee', '0mdfhcTmiPpPz6rLm7TDzugR3GK+enovXRN3nDF+bAk=', 'Patient', 'Active', 'What\'s your favorite Color?', 'kPP3e1CTgrOFy2MeVuAyRj3YCF0KkXkpoqnlJBGV5Nw=', 'moganee_pfp.jpg');
 
 --
 -- Indexes for dumped tables
@@ -136,7 +141,8 @@ INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_username`, `
 -- Indexes for table `tbl_diagnosis`
 --
 ALTER TABLE `tbl_diagnosis`
-  ADD PRIMARY KEY (`d_id`);
+  ADD PRIMARY KEY (`d_id`),
+  ADD UNIQUE KEY `u_id` (`u_id`);
 
 --
 -- Indexes for table `tbl_log`
@@ -166,13 +172,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_diagnosis`
 --
 ALTER TABLE `tbl_diagnosis`
-  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_log`
 --
 ALTER TABLE `tbl_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `tbl_specialty`
@@ -184,11 +190,17 @@ ALTER TABLE `tbl_specialty`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tbl_diagnosis`
+--
+ALTER TABLE `tbl_diagnosis`
+  ADD CONSTRAINT `uidd` FOREIGN KEY (`u_id`) REFERENCES `tbl_user` (`u_id`);
 
 --
 -- Constraints for table `tbl_log`

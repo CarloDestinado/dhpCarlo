@@ -89,6 +89,7 @@ public class addDiagnosis extends javax.swing.JFrame {
         doctor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        p_lname = new javax.swing.JTextField();
 
         jLabel5.setText("jLabel5");
 
@@ -116,14 +117,20 @@ public class addDiagnosis extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 110, 160, 30);
 
+        p_name.setEditable(false);
         p_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        p_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_nameMouseClicked(evt);
+            }
+        });
         p_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 p_nameActionPerformed(evt);
             }
         });
         jPanel1.add(p_name);
-        p_name.setBounds(160, 170, 290, 30);
+        p_name.setBounds(160, 170, 140, 30);
 
         jScrollPane1.setFocusable(false);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -193,6 +200,21 @@ public class addDiagnosis extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(0, 170, 160, 30);
 
+        p_lname.setEditable(false);
+        p_lname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        p_lname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_lnameMouseClicked(evt);
+            }
+        });
+        p_lname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p_lnameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(p_lname);
+        p_lname.setBounds(300, 170, 140, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -217,16 +239,42 @@ public class addDiagnosis extends javax.swing.JFrame {
         dbConnector db = new dbConnector();
         session sess = session.getInstance();  // Capitalize if your class is Session
         String pn = p_name.getText();
+        String ln = p_lname.getText();
         String d = diagnose.getText();
         String uname = sess.getUsername();
         int userId = 0;
+        dbConnector connector = new dbConnector();
+
  
         try {
-            String insertQuery = "INSERT INTO tbl_diagnosis (doctor, patient, diagnosis) VALUES (?, ?, ?)";
+            
+            try {
+                String query2 = "SELECT * FROM tbl_user WHERE u_fname = ? AND u_lname = ?";
+                PreparedStatement pstmt = connector.getConnection().prepareStatement(query2);
+                pstmt.setString(1, pn);  // Safely set the user ID
+                pstmt.setString(2, ln); 
+
+                ResultSet resultSet = pstmt.executeQuery();
+
+                if (resultSet.next()) {
+                    userId = resultSet.getInt("u_id");   // Update the outer userId correctly
+                    uname = resultSet.getString("u_username");
+                    String firstName = resultSet.getString("u_fname");
+                    String lastName = resultSet.getString("u_lname");
+
+                    System.out.println("Welcome " + firstName + " " + lastName + "!");
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQL Exception: " + ex);
+            }
+
+            
+            String insertQuery = "INSERT INTO tbl_diagnosis (doctor, patient, diagnosis,u_id) VALUES (?, ?, ?,?)";
             PreparedStatement insertStmt = db.getConnection().prepareStatement(insertQuery);
             insertStmt.setString(1, sess.getFname() + " " + sess.getLname());
             insertStmt.setString(2, pn);
             insertStmt.setString(3, d);
+            insertStmt.setInt(4, userId);
 
             int rowsInserted = insertStmt.executeUpdate();
             if (rowsInserted > 0) {
@@ -264,6 +312,20 @@ public class addDiagnosis extends javax.swing.JFrame {
     private void doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_doctorActionPerformed
+
+    private void p_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_nameMouseClicked
+        pickPatient pp = new pickPatient();
+        pp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_p_nameMouseClicked
+
+    private void p_lnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_lnameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_lnameMouseClicked
+
+    private void p_lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_lnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_lnameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,6 +378,7 @@ public class addDiagnosis extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTextField p_lname;
     public javax.swing.JTextField p_name;
     // End of variables declaration//GEN-END:variables
 
