@@ -90,6 +90,7 @@ public class addDiagnosis extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         p_lname = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -105,20 +106,21 @@ public class addDiagnosis extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Input Diagnosis Here:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 220, 160, 30);
+        jLabel2.setBounds(290, 260, 240, 30);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Doctor's Name");
+        jLabel3.setText("Doctor's Name:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(0, 110, 160, 30);
+        jLabel3.setBounds(70, 140, 220, 40);
 
         p_name.setEditable(false);
-        p_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        p_name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        p_name.setToolTipText("");
         p_name.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 p_nameMouseClicked(evt);
@@ -130,17 +132,18 @@ public class addDiagnosis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(p_name);
-        p_name.setBounds(160, 170, 140, 30);
+        p_name.setBounds(290, 200, 200, 40);
 
         jScrollPane1.setFocusable(false);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         diagnose.setColumns(20);
+        diagnose.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         diagnose.setRows(5);
         jScrollPane1.setViewportView(diagnose);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(160, 220, 290, 100);
+        jScrollPane1.setBounds(290, 290, 550, 190);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -151,7 +154,7 @@ public class addDiagnosis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(190, 330, 90, 30);
+        jButton1.setBounds(570, 490, 130, 40);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -162,46 +165,47 @@ public class addDiagnosis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(330, 330, 90, 30);
+        jButton2.setBounds(710, 490, 130, 40);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADD DIAGNOSIS");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 60));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 910, 60));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 10, 490, 60);
+        jPanel2.setBounds(0, 0, 930, 90);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel4.setText("please your name here");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(160, 90, 290, 16);
+        jLabel4.setBounds(290, 120, 290, 16);
 
+        doctor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         doctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctorActionPerformed(evt);
             }
         });
         jPanel1.add(doctor);
-        doctor.setBounds(160, 110, 290, 30);
+        doctor.setBounds(290, 140, 290, 40);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel7.setText("please enter the first name and last name of patient");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(160, 150, 290, 16);
+        jLabel7.setBounds(290, 180, 290, 16);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Patient's Name");
+        jLabel8.setText("Patient's Name:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(0, 170, 160, 30);
+        jLabel8.setBounds(70, 200, 220, 40);
 
         p_lname.setEditable(false);
-        p_lname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        p_lname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         p_lname.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 p_lnameMouseClicked(evt);
@@ -213,20 +217,25 @@ public class addDiagnosis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(p_lname);
-        p_lname.setBounds(300, 170, 140, 30);
+        p_lname.setBounds(490, 200, 190, 40);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doc_nobg.png"))); // NOI18N
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(0, 240, 290, 310);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void p_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_nameActionPerformed
@@ -375,6 +384,7 @@ public class addDiagnosis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

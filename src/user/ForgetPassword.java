@@ -217,6 +217,7 @@ public void logEvent(int userId, String username, String description) {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -226,57 +227,67 @@ public void logEvent(int userId, String username, String description) {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Username");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 80, 30));
-        jPanel1.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 230, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 80, 30));
 
+        un.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel1.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 360, 40));
+
+        Search.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search-30.png"))); // NOI18N
         Search.setText("Search");
+        Search.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        Search.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         Search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SearchMouseClicked(evt);
             }
         });
-        jPanel1.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 80, 30));
+        jPanel1.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 120, 40));
 
-        sq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your first pet?", "What's the lastname of your Mother?", "What's your favorite food?", "What's your favorite Color? What's your birth month?" }));
         sq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sqActionPerformed(evt);
             }
         });
-        jPanel1.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 280, -1));
-        jPanel1.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 230, 30));
+        jPanel1.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 360, -1));
+        jPanel1.add(ans, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 360, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("New Password");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, 30));
-        jPanel1.add(Newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 230, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 130, 30));
 
+        Newpass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel1.add(Newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, 360, 40));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Cancel");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 90, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 110, 50));
 
+        Submit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Submit.setText("Submit");
         Submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SubmitMouseClicked(evt);
             }
         });
-        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 90, 30));
+        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 110, 50));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("FORGOT PASSWORD");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 40));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("Login here");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -284,15 +295,19 @@ public void logEvent(int userId, String username, String description) {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 70, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 90, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Remember your passsword? ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 180, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 240, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 490));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Reset_Password-removebg.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 260, 230));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 640));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
@@ -412,6 +427,7 @@ public void logEvent(int userId, String username, String description) {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> sq;
     private javax.swing.JTextField un;

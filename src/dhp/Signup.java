@@ -121,8 +121,6 @@ public class Signup extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         stats = new javax.swing.JLabel();
         type = new javax.swing.JComboBox<>();
@@ -134,6 +132,7 @@ public class Signup extends javax.swing.JFrame {
         sq = new javax.swing.JComboBox<>();
         answ = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -146,70 +145,64 @@ public class Signup extends javax.swing.JFrame {
         name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("FIRSTNAME");
-        jPanel41.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, 30));
+        jPanel41.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 280, 30));
 
         age.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         age.setText("LASTNAME");
-        jPanel41.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 170, 30));
+        jPanel41.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 280, 30));
 
         address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         address.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         address.setText("USERNAME");
-        jPanel41.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 30));
+        jPanel41.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 270, 30));
 
         dob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         dob.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dob.setText("PASSWORD");
-        jPanel41.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 170, 30));
+        jPanel41.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 430, 280, 30));
 
         phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         phone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         phone.setText("EMAIL");
-        jPanel41.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 170, 30));
+        jPanel41.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 510, 280, 30));
 
+        fname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel41.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 270, 30));
+        jPanel41.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 300, 30));
 
+        lname.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel41.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 270, 30));
+        jPanel41.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 300, 30));
 
+        username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
-        jPanel41.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 270, 30));
+        jPanel41.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 300, 30));
 
+        email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
-        jPanel41.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 270, 30));
+        jPanel41.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 300, 30));
         jPanel41.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
         jPanel41.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 153));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("WELCOME TO DIAGNOSIS HEALTH PROFILE");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 750, 50));
-
-        jPanel41.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 70));
-
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("BACK");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -221,17 +214,19 @@ public class Signup extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel41.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 110, 40));
+        jPanel41.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 470, 110, 40));
 
         stats.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         stats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stats.setText("TYPE");
-        jPanel41.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 170, 30));
+        jPanel41.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 270, 30));
 
+        type.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Patient", "Medical Staff" }));
-        jPanel41.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 270, 30));
+        jPanel41.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 300, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("REGISTER");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -243,14 +238,18 @@ public class Signup extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel41.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 110, 40));
-        jPanel41.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 270, 30));
+        jPanel41.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, 110, 40));
+
+        password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel41.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 300, 30));
 
         dob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         dob1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dob1.setText("RE-ENTER PASSWORD");
-        jPanel41.add(dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 30));
-        jPanel41.add(Cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 270, 30));
+        jPanel41.add(dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 270, 30));
+
+        Cpassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel41.add(Cpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 300, 30));
 
         check.setBackground(new java.awt.Color(255, 255, 255));
         check.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -260,32 +259,37 @@ public class Signup extends javax.swing.JFrame {
                 checkActionPerformed(evt);
             }
         });
-        jPanel41.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, 30));
+        jPanel41.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, -1, 30));
 
-        sq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's the name of your First pet?", "What's the lastname of your Mother?", "What's your favorite Food?", "What's your favorite Color?", " " }));
-        jPanel41.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 270, -1));
+        jPanel41.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 330, -1));
 
-        answ.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel41.add(answ, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 180, 30));
+        answ.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel41.add(answ, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 330, 30));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SIGN UP FORM");
-        jPanel41.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 240, 50));
+        jPanel41.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 270, 50));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo-dark-transparent.png"))); // NOI18N
+        jPanel41.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, 751, Short.MAX_VALUE)
+            .addComponent(jPanel41, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel41, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel41, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
@@ -441,9 +445,8 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JTextField lname;
     private javax.swing.JLabel name;

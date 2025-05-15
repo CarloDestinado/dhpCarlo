@@ -131,23 +131,25 @@ public class DHPMAIN extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        ADUSERT.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        ADUSERT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ADUSERT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ADUSERT.setText(" Username");
-        jPanel1.add(ADUSERT, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 130, 40));
+        jPanel1.add(ADUSERT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 110, 40));
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 320, 40));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 380, 40));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 130, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 110, 40));
 
         jButton5.setBackground(new java.awt.Color(51, 153, 255));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("SIGN UP");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +157,7 @@ public class DHPMAIN extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 90, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 450, 90, 30));
 
         right.setBackground(new java.awt.Color(0, 51, 153));
         right.setToolTipText("");
@@ -164,28 +166,28 @@ public class DHPMAIN extends javax.swing.JFrame {
         right.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 125, -1, -1));
         right.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Health Data, Made Simple");
-        right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 350, -1));
+        right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 380, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/log in bg.png"))); // NOI18N
-        right.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 280, 480, 410));
+        right.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 350, 480, 410));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-medical-records-100.png"))); // NOI18N
         right.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 100, 120));
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 21)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("DIAGNOSIS HEATLH PROFILE");
-        right.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 350, -1));
+        right.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 380, -1));
 
-        jPanel1.add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 356, 590));
+        jPanel1.add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 650));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Do you have an account?");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,11 +195,11 @@ public class DHPMAIN extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 200, 30));
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 320, 40));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, 200, 30));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 380, 40));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(51, 153, 255));
         jButton6.setText("LOGIN");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +207,7 @@ public class DHPMAIN extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 120, 30));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 120, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -215,22 +217,25 @@ public class DHPMAIN extends javax.swing.JFrame {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 200, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, 200, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

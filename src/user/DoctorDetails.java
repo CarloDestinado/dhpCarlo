@@ -338,11 +338,12 @@ public class DoctorDetails extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 130, 30));
 
         specialty.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.add(specialty, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 340, 30));
+        jPanel2.add(specialty, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 350, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 400, 520));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void acc_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_emailActionPerformed
