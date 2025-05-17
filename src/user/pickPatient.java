@@ -45,7 +45,7 @@ public class pickPatient extends javax.swing.JFrame {
      public void displayData(){
             try{
                 dbConnector dbc = new dbConnector();
-                ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_username, u_email, u_status FROM tbl_user");
+                ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname, u_username, u_email, u_type, u_status FROM tbl_user");
                 user_table.setModel(DbUtils.resultSetToTableModel(rs));
                  rs.close();
             }catch(SQLException ex){

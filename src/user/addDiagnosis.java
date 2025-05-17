@@ -76,6 +76,7 @@ public class addDiagnosis extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         p_name = new javax.swing.JTextField();
@@ -106,6 +107,17 @@ public class addDiagnosis extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search-30.png"))); // NOI18N
+        jLabel10.setText("SEARCH");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(280, 200, 90, 40);
+
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Input Diagnosis Here:");
@@ -132,7 +144,7 @@ public class addDiagnosis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(p_name);
-        p_name.setBounds(290, 200, 200, 40);
+        p_name.setBounds(370, 200, 200, 40);
 
         jScrollPane1.setFocusable(false);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -196,7 +208,7 @@ public class addDiagnosis extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel7.setText("please enter the first name and last name of patient");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(290, 180, 290, 16);
+        jLabel7.setBounds(370, 180, 290, 16);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -217,7 +229,7 @@ public class addDiagnosis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(p_lname);
-        p_lname.setBounds(490, 200, 190, 40);
+        p_lname.setBounds(570, 200, 190, 40);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doc_nobg.png"))); // NOI18N
         jPanel1.add(jLabel9);
@@ -323,9 +335,7 @@ public class addDiagnosis extends javax.swing.JFrame {
     }//GEN-LAST:event_doctorActionPerformed
 
     private void p_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_nameMouseClicked
-        pickPatient pp = new pickPatient();
-        pp.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_p_nameMouseClicked
 
     private void p_lnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_lnameMouseClicked
@@ -335,6 +345,12 @@ public class addDiagnosis extends javax.swing.JFrame {
     private void p_lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_lnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_p_lnameActionPerformed
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+pickPatient pp = new pickPatient();
+        pp.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -377,6 +393,7 @@ public class addDiagnosis extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
