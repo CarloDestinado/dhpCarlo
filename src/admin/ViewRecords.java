@@ -99,10 +99,10 @@ public class ViewRecords extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tbltransaction);
 
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 640, 350));
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 820, 480));
 
         cancel1.setBackground(new java.awt.Color(255, 255, 255));
-        cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        cancel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cancel1.setForeground(new java.awt.Color(27, 57, 77));
         cancel1.setText("Cancel");
         cancel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,13 +115,13 @@ public class ViewRecords extends javax.swing.JFrame {
                 cancel1ActionPerformed(evt);
             }
         });
-        jPanel4.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 90, 40));
+        jPanel4.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 560, 130, 60));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
         jLabel1.setText("DIAGNOSIS");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 500));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
 
         pack();
         setLocationRelativeTo(null);

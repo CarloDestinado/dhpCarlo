@@ -11,6 +11,7 @@ import admin.Records;
 import config.dbConnector;
 import config.passwordHasher;
 import config.session;
+import java.awt.BorderLayout;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,11 +30,27 @@ public class DHPMAIN extends javax.swing.JFrame {
      */
     public DHPMAIN() {
         initComponents();
-    }
+        // Create the moving text panel
+    MovingTextPanel movingText = new MovingTextPanel("WELCOME TO DIAGNOSIS HEALTH PROFILE");
+    movingText.setPreferredSize(textPanel.getSize());
     
+  
+
+    // Add the custom panel to your existing JPanel (from GUI)
+    textPanel.setLayout(new BorderLayout());
+    textPanel.add(movingText, BorderLayout.CENTER);
+    
+   
+
+    movingText.startMoving();
+    
+    }
+     
+
         static String status;
         static String type;
-
+        
+     
     
     public static boolean logAcc(String username, String password)
     {
@@ -100,6 +117,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        textPanel = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -219,12 +237,27 @@ public class DHPMAIN extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, 200, -1));
 
+        textPanel.setBackground(new java.awt.Color(0, 102, 255));
+
+        javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
+        textPanel.setLayout(textPanelLayout);
+        textPanelLayout.setHorizontalGroup(
+            textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+        textPanelLayout.setVerticalGroup(
+            textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(textPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 780, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -364,6 +397,7 @@ try {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField password;
     private javax.swing.JPanel right;
+    private javax.swing.JPanel textPanel;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
