@@ -296,6 +296,7 @@ public class Records extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         user_table = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -310,23 +311,26 @@ public class Records extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-100.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_ngani.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, 90));
 
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Current User");
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 20));
 
+        acc_id.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
         jPanel1.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 200, 20));
 
-        acc_fname.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        acc_fname.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fname.setText("ACC_FNAME");
         jPanel1.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 200, 20));
 
+        acc_lname.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lname.setText("ACC_LNAME");
         jPanel1.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, -1));
@@ -339,7 +343,7 @@ public class Records extends javax.swing.JFrame {
                 addActionPerformed(evt);
             }
         });
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 60));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 60));
 
         update.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update-user.png"))); // NOI18N
@@ -354,7 +358,7 @@ public class Records extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 150, 60));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, 60));
 
         register1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         register1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete-user.png"))); // NOI18N
@@ -364,7 +368,7 @@ public class Records extends javax.swing.JFrame {
                 register1ActionPerformed(evt);
             }
         });
-        jPanel1.add(register1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 150, 60));
+        jPanel1.add(register1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 150, 60));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -375,11 +379,12 @@ public class Records extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 200, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 200, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 450));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 540));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         user_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -391,9 +396,13 @@ public class Records extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(user_table);
 
-        jPanel8.add(jScrollPane1);
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 610, 460));
 
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 500, 450));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel1.setText("USER RECORDS");
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 630, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -526,6 +535,7 @@ public class Records extends javax.swing.JFrame {
     private javax.swing.JLabel acc_id;
     private javax.swing.JLabel acc_lname;
     private javax.swing.JButton add;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

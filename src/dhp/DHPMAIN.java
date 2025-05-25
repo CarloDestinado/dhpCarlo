@@ -108,12 +108,12 @@ public class DHPMAIN extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         right = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        check = new javax.swing.JCheckBox();
         password = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -182,7 +182,6 @@ public class DHPMAIN extends javax.swing.JFrame {
         right.setPreferredSize(new java.awt.Dimension(400, 500));
         right.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         right.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 125, -1, -1));
-        right.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,7 +190,7 @@ public class DHPMAIN extends javax.swing.JFrame {
         right.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 380, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/log in bg.png"))); // NOI18N
-        right.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 350, 480, 410));
+        right.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 310, 480, 410));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-medical-records-100.png"))); // NOI18N
@@ -214,7 +213,17 @@ public class DHPMAIN extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, 200, 30));
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 380, 40));
+
+        check.setBackground(new java.awt.Color(255, 255, 255));
+        check.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        check.setText("show");
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
+        jPanel1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, -1, 40));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 320, 40));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -341,6 +350,19 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
 
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
+
+        boolean isSelected = check.isSelected();
+
+        if (isSelected) {
+            password.setEchoChar((char)0);
+            
+        } else {
+            password.setEchoChar('*');
+           
+        }
+    }//GEN-LAST:event_checkActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -378,11 +400,11 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ADUSERT;
+    private javax.swing.JCheckBox check;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

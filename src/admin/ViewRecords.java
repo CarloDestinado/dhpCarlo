@@ -78,6 +78,11 @@ public class ViewRecords extends javax.swing.JFrame {
         tbltransaction = new javax.swing.JTable();
         cancel1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        area = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,7 +104,7 @@ public class ViewRecords extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tbltransaction);
 
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 820, 480));
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 600, 460));
 
         cancel1.setBackground(new java.awt.Color(255, 255, 255));
         cancel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -115,13 +120,51 @@ public class ViewRecords extends javax.swing.JFrame {
                 cancel1ActionPerformed(evt);
             }
         });
-        jPanel4.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 560, 130, 60));
+        jPanel4.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 500, 110, 40));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
         jLabel1.setText("DIAGNOSIS");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
+        area.setColumns(20);
+        area.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
+        area.setRows(5);
+        area.setText("DOCTOR'S ID:\nPATIENT'S ID:\nPATIENT NAME:\nDIAGNOSIS:\n\n\n\n\n\nDOCTOR'S NAME:");
+        jScrollPane2.setViewportView(area);
+
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 310, 230));
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Reset");
+        jButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 80, 40));
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Print Receipt");
+        jButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 420, 70, 40));
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Print Record");
+        jButton6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 90, 40));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -137,6 +180,34 @@ public class ViewRecords extends javax.swing.JFrame {
         ru.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancel1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // area.setText("");
+        //username.setText("");
+        //loanamount.setText("");
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try{
+            area.print();
+        }catch(Exception e){
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+                    // Step 1: Set custom data
+             area.setText("WELCOME TO DIAGNOSIS HEALTH PROFILE\n\n");
+             area.append("Health Data, Made Simple\n");
+            
+
+             // Step 2: Print
+             try {
+                 area.print();
+             } catch (Exception e) {
+                 e.printStackTrace(); // Optional: handle errors
+             }
+
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,9 +246,14 @@ public class ViewRecords extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextArea area;
     public javax.swing.JButton cancel1;
+    public javax.swing.JButton jButton4;
+    public javax.swing.JButton jButton5;
+    public javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tbltransaction;
     // End of variables declaration//GEN-END:variables

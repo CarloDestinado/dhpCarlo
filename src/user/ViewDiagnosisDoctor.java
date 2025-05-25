@@ -6,13 +6,8 @@
 package user;
 
 import config.dbConnector;
-import config.session;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -56,8 +51,8 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
         user_table = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         jScrollPane6.setViewportView(jEditorPane1);
 
@@ -68,7 +63,7 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         user_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,21 +78,20 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(user_table);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 160, 490, 290);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 650, 430));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("ADD DIAGNOSIS");
+        jButton4.setBackground(new java.awt.Color(0, 102, 102));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton4.setText("VIEW DIAGNOSIS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(530, 250, 150, 50);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 150, 60));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back icon.png"))); // NOI18N
         jButton1.setText("back");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -106,23 +100,25 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(560, 380, 100, 40);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Copy the name of the selected patient before proceeding to Add Diagnosis");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 130, 600, 20);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 120, 50));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("PATIENT DIAGNOSIS");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 40, 370, 30);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 370, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 480));
+        jButton5.setBackground(new java.awt.Color(0, 102, 102));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton5.setText("ADD DIAGNOSIS");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 150, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -130,16 +126,20 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DoctorDashboard ed = new DoctorDashboard();
-                        ed.setVisible(true);
-                        this.dispose(); // TODO add your handling code here:
+        ed.setVisible(true);
+        this.dispose(); // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-            addDiagnosis ad = new addDiagnosis();
-                        ad.setVisible(true);
-                        this.dispose();
-      
+       ViewDiagnosis vt = new ViewDiagnosis();
+        vt.setVisible(true);
+        this.dispose(); 
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +182,9 @@ public class ViewDiagnosisDoctor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
