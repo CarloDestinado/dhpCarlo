@@ -155,8 +155,6 @@ public class DoctorDetails extends javax.swing.JFrame {
         acc_uname = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         acc_name = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        specialty = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -331,15 +329,6 @@ public class DoctorDetails extends javax.swing.JFrame {
         acc_name.setText("jLabel5");
         jPanel2.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 240, 40));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("add specialty here:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 130, 30));
-
-        specialty.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.add(specialty, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 350, 30));
-
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 400, 520));
 
         pack();
@@ -445,7 +434,7 @@ public class DoctorDetails extends javax.swing.JFrame {
         dbConnector connector = new dbConnector();
         int userId = 0;
         String uname2 = null;
-        String sp = specialty.getText();
+      
 
         // Check if username or email already exists
         if (updateCheck()) {
@@ -498,7 +487,7 @@ public class DoctorDetails extends javax.swing.JFrame {
                 logEvent(userId, uname2, sess.getType(), "User Changed Their Details"); //fixed
                 
                 
-                dbc.insertData("INSERT INTO tbl_specialty (s_specialty, u_id) VALUES ('"+sp+"','"+userId+"')");
+               
                 
                 
             } else {
@@ -570,7 +559,6 @@ public class DoctorDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
@@ -578,7 +566,6 @@ public class DoctorDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField specialty;
     public javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
