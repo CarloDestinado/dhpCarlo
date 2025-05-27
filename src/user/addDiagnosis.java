@@ -92,6 +92,7 @@ public class addDiagnosis extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         p_lname = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        acc_fname = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -192,7 +193,7 @@ public class addDiagnosis extends javax.swing.JFrame {
         jPanel2.setBounds(0, 0, 930, 90);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jLabel4.setText("please your name here");
+        jLabel4.setText("please enter your name here");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(290, 120, 290, 16);
 
@@ -233,7 +234,13 @@ public class addDiagnosis extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/doc_nobg.png"))); // NOI18N
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 240, 290, 310);
+        jLabel9.setBounds(-10, 230, 300, 250);
+
+        acc_fname.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_fname.setText("doctor's name");
+        jPanel1.add(acc_fname);
+        acc_fname.setBounds(-2, 480, 290, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,7 +258,9 @@ public class addDiagnosis extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void p_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_nameActionPerformed
-        // TODO add your handling code here:
+    pickPatient pp = new pickPatient();
+                pp.setVisible(true);
+                this.dispose();               // TODO add your handling code here:
     }//GEN-LAST:event_p_nameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -327,7 +336,21 @@ public class addDiagnosis extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-               // TODO add your handling code here:
+session sess = session.getInstance();
+       if(sess.getUid() == 0)
+       {
+           
+           DHPMAIN l = new DHPMAIN();
+           l.setVisible(true);
+           this.dispose();
+           JOptionPane.showMessageDialog(null,"No Account, Login FIrst");
+       }else
+       {
+           acc_fname.setText("Doc. " + sess.getFname());
+             
+           
+
+       }               // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorActionPerformed
@@ -335,21 +358,27 @@ public class addDiagnosis extends javax.swing.JFrame {
     }//GEN-LAST:event_doctorActionPerformed
 
     private void p_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_nameMouseClicked
-        
+     pickPatient pp = new pickPatient();
+            pp.setVisible(true);
+            this.dispose();          
     }//GEN-LAST:event_p_nameMouseClicked
 
     private void p_lnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_lnameMouseClicked
-        // TODO add your handling code here:
+     pickPatient pp = new pickPatient();
+            pp.setVisible(true);
+            this.dispose();          // TODO add your handling code here:
     }//GEN-LAST:event_p_lnameMouseClicked
 
     private void p_lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_lnameActionPerformed
-        // TODO add your handling code here:
+     pickPatient pp = new pickPatient();
+            pp.setVisible(true);
+            this.dispose();          // TODO add your handling code here:
     }//GEN-LAST:event_p_lnameActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-pickPatient pp = new pickPatient();
-        pp.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+    pickPatient pp = new pickPatient();
+            pp.setVisible(true);
+            this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MouseClicked
 
     /**
@@ -388,6 +417,7 @@ pickPatient pp = new pickPatient();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acc_fname;
     private javax.swing.JTextArea diagnose;
     private javax.swing.JTextField doctor;
     private javax.swing.JButton jButton1;
