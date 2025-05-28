@@ -77,7 +77,6 @@ public class ChangePass extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        idd = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         acc_fname = new javax.swing.JLabel();
         acc_lname = new javax.swing.JLabel();
@@ -94,6 +93,7 @@ public class ChangePass extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         check = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 204));
         jPanel8.setLayout(null);
@@ -116,12 +116,7 @@ public class ChangePass extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("CHANGE PASSWORD");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 40));
-
-        idd.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        idd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        idd.setText("(UID)");
-        jPanel2.add(idd, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 120, 40));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 40));
 
         jButton3.setBackground(new java.awt.Color(0, 102, 102));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back icon.png"))); // NOI18N
@@ -132,25 +127,25 @@ public class ChangePass extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 100, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 100, 30));
 
         acc_fname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acc_fname.setForeground(new java.awt.Color(255, 255, 255));
         acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fname.setText("ACC_USERNAME");
-        jPanel2.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 150, 20));
+        jPanel2.add(acc_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 150, 20));
 
         acc_lname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acc_lname.setForeground(new java.awt.Color(255, 255, 255));
         acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lname.setText("USER");
-        jPanel2.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 140, 20));
+        jPanel2.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 140, 20));
 
         acc_id.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        jPanel2.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 140, -1));
+        jPanel2.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 140, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("LOG-OUT");
@@ -178,7 +173,7 @@ public class ChangePass extends javax.swing.JFrame {
         });
         jPanel5.add(oldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 200, 30));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 360, 30));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 360, 30));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -190,7 +185,7 @@ public class ChangePass extends javax.swing.JFrame {
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
         jPanel6.add(newPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 200, 30));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 360, -1));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 360, -1));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(null);
@@ -204,7 +199,7 @@ public class ChangePass extends javax.swing.JFrame {
         jPanel7.add(jLabel4);
         jLabel4.setBounds(0, 0, 160, 30);
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 360, 30));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 360, 30));
 
         check.setBackground(new java.awt.Color(0, 102, 102));
         check.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -215,7 +210,7 @@ public class ChangePass extends javax.swing.JFrame {
                 checkActionPerformed(evt);
             }
         });
-        jPanel2.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 60, 20));
+        jPanel2.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 70, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setText("Confirm");
@@ -224,9 +219,12 @@ public class ChangePass extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 100, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 100, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 460));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/forgot_pass.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 520));
 
         pack();
         setLocationRelativeTo(null);
@@ -385,10 +383,10 @@ if (passw.isEmpty() || Cpassw.isEmpty() || oldPassInput.isEmpty()) {
     private javax.swing.JLabel acc_id;
     public javax.swing.JLabel acc_lname;
     private javax.swing.JCheckBox check;
-    private javax.swing.JLabel idd;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

@@ -413,8 +413,8 @@ public class CreateUser extends javax.swing.JFrame {
         jPanel10.add(stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 190, 30));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
-        jLabel1.setText("CREATE USER");
-        jPanel10.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jLabel1.setText("USER");
+        jPanel10.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
