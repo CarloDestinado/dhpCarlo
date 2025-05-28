@@ -197,7 +197,9 @@ public class ViewRecords extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
                     // Step 1: Set custom data
              area.setText("WELCOME TO DIAGNOSIS HEALTH PROFILE\n\n");
-             area.append("Health Data, Made Simple\n");
+             area.append("Health Data, Made Simple\n Diagnosis ID: \n"
+                     + "Patient's Name: \n"
+                     + "Doctor's Name:  \n");
             
 
              // Step 2: Print
